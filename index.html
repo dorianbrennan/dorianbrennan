@@ -1,1 +1,40 @@
+---
+layout: default
+---
 
+<section id="home">
+    <div class="home-header">
+        <div class="home-text">
+            <h1>Hello, I'm {{ site.author.name }}</h1>
+            <div class="intro">
+                <p>{{ site.author.bio }}</p>
+                <p>This is a space for my essays, short fiction, and occasional thoughts on whatever captures my attention.</p>
+            </div>
+        </div>
+        <div class="home-photo">
+            <img src="{{ '/assets/images/photo.jpg' | relative_url }}" alt="{{ site.author.name }}">
+        </div>
+    </div>
+
+    <div class="home-columns">
+        <div class="home-column">
+            <h2>Recent Writing</h2>
+            {% for post in site.posts limit:3 %}
+            <div class="home-post-item">
+                <div class="home-post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+                <div class="home-post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="home-column">
+            <h2>Recent Stories</h2>
+            {% for story in site.stories limit:3 %}
+            <div class="home-post-item">
+                <div class="home-post-title"><a href="{{ story.url | relative_url }}">{{ story.title }}</a></div>
+                <div class="home-post-date">{{ story.reading_time }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
