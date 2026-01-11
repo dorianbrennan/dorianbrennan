@@ -1,0 +1,45 @@
+# Site settings
+title: Your Name
+description: Architect, writer, thinker, and creator
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# Author info
+author:
+  name: Your Name
+  email: you@email.com
+  location: Your Location
+  bio: I'm a architect, writer, thinker, and creator based in Sydney. I write about technology, culture, and the stories that shape our world.
+
+# Social links
+social:
+  twitter: your_twitter
+  linkedin: your_linkedin
+  github: your_github
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:title/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+# Collections
+collections:
+  stories:
+    output: true
+    permalink: /stories/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "stories"
+    values:
+      layout: "story"
