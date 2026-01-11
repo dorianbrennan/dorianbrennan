@@ -1,1 +1,22 @@
+---
+layout: default
+title: Stories
+---
 
+<section id="stories">
+    <h1>Short Stories</h1>
+    <p class="intro">Fiction that explores the strange and the familiar.</p>
+    
+    {% for story in site.stories %}
+    <div class="story-item">
+        <div class="story-header">
+            <h3 class="story-title">{{ story.title }}</h3>
+            <p class="post-date">{{ story.reading_time }}</p>
+        </div>
+        <div class="story-content">
+            {{ story.excerpt }}
+        </div>
+        <a href="{{ story.url | relative_url }}" class="read-more">Continue reading →</a>
+    </div>
+    {% endfor %}
+</section>
