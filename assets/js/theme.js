@@ -4,10 +4,22 @@
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        updateIcon(theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateIcon(theme);
+    updatePhoto(theme);  // Add this line
+}
+
+function updatePhoto(theme) {
+    const photo = document.getElementById('profilePhoto');
+    if (photo) {
+        if (theme === 'dark') {
+            photo.src = photo.src.replace('photo-light.jpeg', 'photo-dark.jpg');
+        } else {
+            photo.src = photo.src.replace('photo-dark.jpg', 'photo-light.jpeg');
+        }
     }
+}
 
     function updateIcon(theme) {
         if (themeToggle) {
@@ -28,6 +40,7 @@
     // Apply theme immediately on page load
     const initialTheme = getTheme();
     document.documentElement.setAttribute('data-theme', initialTheme);
+    updatePhoto(initialTheme);
     
     // Update icon once DOM is ready
     if (document.readyState === 'loading') {
