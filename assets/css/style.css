@@ -35,9 +35,9 @@ body {
 }
 
 #home {
-    font-family: 'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .container {
