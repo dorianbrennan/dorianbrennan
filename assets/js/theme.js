@@ -13,14 +13,14 @@
 function updatePhoto(theme) {
     const photo = document.getElementById('profilePhoto');
     if (photo) {
+        const basePath = '/dorianbrennan/assets/images/';
         if (theme === 'dark') {
-            photo.src = photo.src.replace('photo-light.jpg', 'photo-dark.jpg');
+            photo.src = basePath + 'photo-dark.jpg';
         } else {
-            photo.src = photo.src.replace('photo-dark.jpg', 'photo-light.jpg');
+            photo.src = basePath + 'photo-light.jpg';
         }
     }
 }
-
     function updateIcon(theme) {
         if (themeToggle) {
             if (theme === 'dark') {
