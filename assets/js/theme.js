@@ -14,9 +14,9 @@ function updatePhoto(theme) {
     const photo = document.getElementById('profilePhoto');
     if (photo) {
         if (theme === 'dark') {
-            photo.src = photo.src.replace('photo-light.jpeg', 'photo-dark.jpg');
+            photo.src = photo.src.replace('photo-light.jpg', 'photo-dark.jpg');
         } else {
-            photo.src = photo.src.replace('photo-dark.jpg', 'photo-light.jpeg');
+            photo.src = photo.src.replace('photo-dark.jpg', 'photo-light.jpg');
         }
     }
 }
