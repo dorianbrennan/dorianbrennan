@@ -1,7 +1,6 @@
----
+
 layout: story
 title: "The Old Man and the Painting"
----
 
 An old man is holding his wife’s hand. They are reminiscing about the lives they had. What they had done. Where they had travelled. The children they had raised. The wife brings up the painting that defined their youth. It always brings a smile to them both.
 
