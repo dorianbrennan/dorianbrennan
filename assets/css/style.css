@@ -450,6 +450,7 @@ footer {
     .home-photo {
         width: 180px;
         height: 180px;
+        margin: 0 auto;
     }
 
     .home-columns {
