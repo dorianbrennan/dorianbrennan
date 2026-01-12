@@ -1,4 +1,4 @@
-![Alt text for the image](assets/images/Books-2025.jpeg "Books of 2025")
+![Books of 2025](assets/images/Books-2025.jpeg)
 
 As always, reading is a big part of who I am, and 2025 was no different. Below is a list of some of the books I read throughout the year. I almost reached my goal of 25 books (finishing 24), so hopefully this year I can meet and even surpass that number.
 
