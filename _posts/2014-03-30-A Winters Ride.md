@@ -1,3 +1,4 @@
+<img src="{{ '/assets/images/AWintersRide.jpeg' | relative_url }}" alt="A Winters Ride" style="display: block; margin: 20px auto; max-width: 70%; height: auto;">
 
 I open my eyes and my body is already protesting. It’s so warm under these covers, why would you want me to get up? The sun is not even out… are you crazy? It’s too early… go back to sleep. I spend the next few minutes struggling with my other self, but knowing that in the end there is no argument. I’m still going.
 
