@@ -3,4 +3,4 @@ Letterform Archive has released a [wonderful video](https://letterformarchive.or
 
 It is a fantastic presentation by Antonio and Chris, with an introduction by Jony Ive.
 
->but very often we don't talk about why we do it. Jony Ive
+> but very often we don't talk about why we do it. Jony Ive
