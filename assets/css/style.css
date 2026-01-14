@@ -108,6 +108,7 @@ blockquote {
     margin: 32px 0 !important;
     padding: 20px 24px !important;
     border-left: 4px solid var(--accent) !important;
+    border-radius: 8px !important;
     background-color: rgba(45, 122, 95, 0.05) !important;
     color: var(--text) !important;
     font-style: italic !important;
