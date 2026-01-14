@@ -34,12 +34,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-#home {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 200;
-    letter-spacing: 0.3px;
-}
-
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -93,34 +87,12 @@ nav a:hover {
     cursor: pointer;
     font-size: 18px;
     padding: 4px;
+    border-radius: 50%; 
     transition: color 0.2s;
 }
 
 .theme-toggle:hover {
     color: var(--accent);
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(77, 154, 127, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(77, 154, 127, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(77, 154, 127, 0);
-    }
-}
-
-.theme-toggle {
-    background: none;
-    border: none;
-    color: var(--text);
-    cursor: pointer;
-    font-size: 18px;
-    padding: 4px;
-    border-radius: 50%; 
-    transition: color 0.2s;
 }
 
 /* Main content */
@@ -174,6 +146,14 @@ a.link:hover {
 /* Landing page */
 #home {
     padding: 100px 0;
+    font-weight: 200;
+    letter-spacing: 0.3px;
+}
+
+#home h1 {
+    font-size: 48px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
 }
 
 .home-header {
@@ -245,14 +225,7 @@ a.link:hover {
     line-height: 1.8;
 }
 
-#home h1 {
-    font-size: 48px;
-    font-weight: 200;
-    letter-spacing: 0.5px;
-}
-
 /* Blog */
-
 .post-list {
     list-style: none;
 }
@@ -269,7 +242,6 @@ a.link:hover {
 .post-title {
     font-size: 20px;
     font-weight: 400;
-    margin-top: 0px;
     margin-bottom: 8px;
 }
 
@@ -404,19 +376,22 @@ a.link:hover {
     margin-bottom: 12px;
 }
 
-.post-content a, .story-full-content a {
+.post-content a, 
+.story-full-content a {
     color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid var(--accent);
     transition: color 0.2s, border-color 0.2s;
 }
 
-.post-content p, .story-full-content p {
+.post-content p, 
+.story-full-content p {
     color: var(--text);
     margin-bottom: 24px;
 }
 
-.post-content h2, .story-full-content h2 {
+.post-content h2, 
+.story-full-content h2 {
     margin-top: 48px;
 }
 
