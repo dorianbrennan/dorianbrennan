@@ -15,13 +15,13 @@
 }
 
 [data-theme="dark"] {
-    --bg: #0a0a0a;
+    --bg: #1a1a2e;
     --text: #e8e8e8;
     --text-secondary: #a0a0a0;
     --accent: #4a9d7f;
     --accent-hover: #5abf9f;
     --border: #2a2a2a;
-    --nav-bg: rgba(10, 10, 10, 0.9);
+    --nav-bg: rgba(26, 26, 46, 0.9);
 }
 
 body {
