@@ -2,7 +2,7 @@
 layout: post
 title: A Winters Ride
 date: 2014-03-30
-excerpt: “I open my eyes and my body is already protesting. It’s so warm under these covers, why would you want me to get up? The sun is not even out… are you crazy? It’s too early… go back to sleep. I spend the next few minutes struggling with my other self, but knowing that in the end there is no argument. I’m still going.”
+excerpt: I open my eyes and my body is already protesting. It’s so warm under these covers, why would you want me to get up? The sun is not even out… are you crazy? It’s too early… go back to sleep. I spend the next few minutes struggling with my other self, but knowing that in the end there is no argument. I’m still going.
 image: /assets/images/AWintersRide.jpeg
 ---
 
