@@ -23,7 +23,11 @@ title: The Considered Frame
                 {% endif %}
             {% endif %}
             
-            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 75 }}</p>
+            {% if post.excerpt %}
+                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 75 }}</p>
+            {% else %}
+                <p class="post-excerpt">{{ post.content | strip_html | truncatewords: 75 }}</p>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
