@@ -2,7 +2,7 @@
 layout: post
 title: The Architect who is now a Diamond
 date: 2022-03-11
-excerpt: I recently read a fascinating article in The New Yorker titled [The Architect Who Became a Diamond](https://www.newyorker.com/magazine/2016/08/01/how-luis-barragan-became-a-diamond). It tells the story of Mexican architect [Luis Barragán](https://en.wikipedia.org/wiki/Luis_Barragán), whose remains were transformed into a diamond by conceptual artist Jill Magid.
+excerpt: I recently read a fascinating article in The New Yorker titled The Architect Who Became a Diamond. It tells the story of Mexican architect Luis Barragán, whose remains were transformed into a diamond by conceptual artist Jill Magid.
 ---
 
 I recently read a fascinating article in The New Yorker titled [The Architect Who Became a Diamond](https://www.newyorker.com/magazine/2016/08/01/how-luis-barragan-became-a-diamond). It tells the story of Mexican architect [Luis Barragán](https://en.wikipedia.org/wiki/Luis_Barragán), whose remains were transformed into a diamond by conceptual artist Jill Magid.
