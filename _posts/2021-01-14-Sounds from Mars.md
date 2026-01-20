@@ -2,7 +2,7 @@
 layout: post
 title: Sounds from Mars
 date: 2021-01-14
-excerpt: NASA has released [audio recorded](https://www.nasa.gov/centers-and-facilities/jpl/hear-audio-from-nasas-perseverance-as-it-travels-through-deep-space/) during the Perseverance mission to Mars. While en route to the Red Planet, the rover was equipped with two microphones designed to capture sound from both the spacecraft and the Martian surface.
+excerpt: NASA has released audio recorded during the Perseverance mission to Mars. While en route to the Red Planet, the rover was equipped with two microphones designed to capture sound from both the spacecraft and the Martian surface.
 ---
 
 NASA has released [audio recorded](https://www.nasa.gov/centers-and-facilities/jpl/hear-audio-from-nasas-perseverance-as-it-travels-through-deep-space/) during the Perseverance mission to Mars. While en route to the Red Planet, the rover was equipped with two microphones designed to capture sound from both the spacecraft and the Martian surface.
