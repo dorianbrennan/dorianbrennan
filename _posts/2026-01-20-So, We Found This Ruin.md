@@ -1,6 +1,6 @@
 ---
 layout: post
-title: o, We Found This Ruin
+title: So, We Found This Ruin
 date: 2026-01-20
 excerpt: As an architect, I have always loved the idea of bringing something abandoned or empty back to life, reimagining it as a place for people to live in and experience.
 ---
