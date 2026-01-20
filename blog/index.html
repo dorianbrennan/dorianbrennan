@@ -5,13 +5,13 @@ title: The Considered Frame
 <section id="blog">
     <h1 style="margin-top: 2rem; margin-bottom: 0.5rem; text-align: center; font-family: 'Georgia', 'Times New Roman', serif;">The Considered Frame</h1>
     <p style="text-align: center; margin-bottom: 0.25rem;">Essays and thoughts on technology, writing, and life.</p>
-    <div style="width: fit-content; margin: 0 auto 2rem auto; border-bottom: 2px solid var(--accent);">
+    <div style="width: fit-content; margin: 0 auto 2rem auto; border-bottom: 2px solid var(--accent); border-radius: 2px;">
         <span style="visibility: hidden;">Essays and thoughts on technology, writing, and life.</span>
     </div>
     
     <ul class="post-list">
         {% for post in site.posts %}
-        <li class="post-item">
+        <li class="post-item" style="border-bottom-color: rgba(45, 122, 95, 0.2);">
             <div class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
             <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
             
