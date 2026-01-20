@@ -12,17 +12,18 @@ title: The Considered Frame
             <div class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
             <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
             
-            {% if post.content contains '<img' %}
-            <div class="post-image">
-                {% assign img_start = post.content | split: '<img' %}
-                {% assign img_tag = post.content | split: '<img' | last | split: '>' | first %}
-                <img {{ img_tag }}>
-            </div>
+            {% assign content_start = post.content | strip_newlines | strip %}
+            {% if content_start contains '<img' %}
+                {% assign before_img = content_start | split: '<img' | first | strip %}
+                {% if before_img.size < 50 %}
+                <div class="post-image">
+                    {% assign img_tag = content_start | split: '<img' | last | split: '>' | first %}
+                    <img {{ img_tag }}>
+                </div>
+                {% endif %}
             {% endif %}
             
-            {% if post.excerpt %}
             <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 75 }}</p>
-            {% endif %}
         </li>
         {% endfor %}
     </ul>
