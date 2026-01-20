@@ -2,7 +2,7 @@
 layout: post
 title: Slow Horses
 date: 2022-05-13
-excerpt: I recently finished season one of [Slow Horses](https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o), the Apple TV+ original series based on the books by Mick Herron.
+excerpt: I recently finished season one of Slow Horses, the Apple TV+ original series based on the books by Mick Herron.
 ---
 
 I recently finished season one of [Slow Horses](https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o), the Apple TV+ original series based on the books by Mick Herron.
