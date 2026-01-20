@@ -1,3 +1,9 @@
+---
+layout: post
+title: Jony Ive's list
+date: 2022-03-10
+excerpt: The Financial Times has just published a [Makers and Creators](https://www.ft.com/content/01ce4d84-d7bd-4bd0-b04a-bc009a4d37a5) guest list edited by designer Jony Ive. One of the pieces features a list of [twelve tools](https://www.ft.com/content/b73731f5-7563-4ff3-9c78-a226643b4648) Ive uses in his practice. I love articles like this because they offer a glimpse into how his mind works.
+---
 
 The Financial Times has just published a [Makers and Creators](https://www.ft.com/content/01ce4d84-d7bd-4bd0-b04a-bc009a4d37a5) guest list edited by designer Jony Ive. One of the pieces features a list of [twelve tools](https://www.ft.com/content/b73731f5-7563-4ff3-9c78-a226643b4648) Ive uses in his practice. I love articles like this because they offer a glimpse into how his mind works.
 
