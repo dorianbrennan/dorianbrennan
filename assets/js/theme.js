@@ -6,6 +6,20 @@
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     
     /**
+     * Updates the theme-color meta tag
+     * @param {string} theme - Either 'dark' or 'light'
+     */
+    function updateThemeColor(theme) {
+        let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (!metaThemeColor) {
+            metaThemeColor = document.createElement('meta');
+            metaThemeColor.setAttribute('name', 'theme-color');
+            document.head.appendChild(metaThemeColor);
+        }
+        metaThemeColor.setAttribute('content', theme === 'dark' ? '#13151a' : '#ffffff');
+    }
+    
+    /**
      * Sets the theme and updates all related UI elements
      * @param {string} theme - Either 'dark' or 'light'
      */
@@ -14,6 +28,7 @@
         localStorage.setItem('theme', theme);
         updateIcon(theme);
         updatePhoto(theme);
+        updateThemeColor(theme);
     }
     
     /**
@@ -59,6 +74,7 @@
         const initialTheme = getTheme();
         document.documentElement.setAttribute('data-theme', initialTheme);
         updatePhoto(initialTheme);
+        updateThemeColor(initialTheme);
         
         // Update icon once DOM is ready
         if (document.readyState === 'loading') {
