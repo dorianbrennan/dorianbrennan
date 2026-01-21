@@ -461,6 +461,51 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+/* Story-specific accent color override */
+.story-full {
+    --accent: #7fa8c9;
+    --accent-hover: #6a96b8;
+}
+
+.story-item {
+    --accent: #7fa8c9;
+    --accent-hover: #6a96b8;
+}
+
+/* Apply story accent to all story page elements */
+.story-full .post-header .post-date,
+.story-full a.link,
+.story-full-content a,
+.story-full .read-more,
+.story-item .read-more {
+    color: #7fa8c9;
+}
+
+.story-full a.link:hover,
+.story-full-content a:hover,
+.story-full .read-more:hover,
+.story-item .read-more:hover {
+    color: #6a96b8;
+}
+
+.story-full-content a {
+    border-bottom-color: #7fa8c9;
+}
+
+.story-full-content a:hover {
+    border-bottom-color: #6a96b8;
+}
+
+/* Story blockquotes with blue accent */
+.story-full-content blockquote {
+    border-left-color: #7fa8c9 !important;
+    background-color: rgba(127, 168, 201, 0.05) !important;
+}
+
+[data-theme="dark"] .story-full-content blockquote {
+    background-color: rgba(127, 168, 201, 0.1) !important;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     nav ul {
