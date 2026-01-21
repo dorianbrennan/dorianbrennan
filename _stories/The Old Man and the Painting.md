@@ -1,6 +1,9 @@
 ---
 layout: story
 title: "The Old Man and the Painting"
+date: 2019-03-16  # Publication date - helps with sorting/archives
+excerpt: "An old man revisits a painting that defined his youth"  # For story listings
+permalink: /stories/The-Old-Man-and-the-Painting/  # If you want explicit control
 ---
 
 An old man is holding his wife’s hand. They are reminiscing about the lives they had lived. What they had done. Where they had travelled. The children they had raised. The wife brings up the painting that defined their youth. It always brings a smile to them both.
