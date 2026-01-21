@@ -415,6 +415,10 @@ a.link:hover {
     margin-bottom: 12px;
 }
 
+.post-header .post-date {
+    color: var(--accent);
+}
+
 .post-content a, 
 .story-full-content a {
     color: var(--accent);
