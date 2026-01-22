@@ -2,22 +2,40 @@
 (function() {
     'use strict';
     
-    const themeToggle = document.getElementById('themeToggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    
     /**
      * Updates the theme-color meta tag
      * @param {string} theme - Either 'dark' or 'light'
      */
     function updateThemeColor(theme) {
-        let metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (!metaThemeColor) {
-            metaThemeColor = document.createElement('meta');
-            metaThemeColor.setAttribute('name', 'theme-color');
-            document.head.appendChild(metaThemeColor);
-        }
+        // Remove all existing theme-color meta tags
+        const existingMetas = document.querySelectorAll('meta[name="theme-color"]');
+        existingMetas.forEach(meta => meta.remove());
+        
+        // Create a fresh meta tag
+        const metaThemeColor = document.createElement('meta');
+        metaThemeColor.setAttribute('name', 'theme-color');
         metaThemeColor.setAttribute('content', theme === 'dark' ? '#13151a' : '#ffffff');
+        document.head.appendChild(metaThemeColor);
     }
+    
+    /**
+     * Gets the current theme from localStorage or system preference
+     * @returns {string} The current theme ('dark' or 'light')
+     */
+    function getTheme() {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored;
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        return prefersDark.matches ? 'dark' : 'light';
+    }
+    
+    // CRITICAL: Set theme color IMMEDIATELY before anything else
+    const initialTheme = getTheme();
+    updateThemeColor(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     
     /**
      * Sets the theme and updates all related UI elements
@@ -58,23 +76,10 @@
     }
     
     /**
-     * Gets the current theme from localStorage or system preference
-     * @returns {string} The current theme ('dark' or 'light')
-     */
-    function getTheme() {
-        const stored = localStorage.getItem('theme');
-        if (stored) return stored;
-        return prefersDark.matches ? 'dark' : 'light';
-    }
-    
-    /**
      * Initializes the theme on page load
      */
     function initializeTheme() {
-        const initialTheme = getTheme();
-        document.documentElement.setAttribute('data-theme', initialTheme);
         updatePhoto(initialTheme);
-        updateThemeColor(initialTheme);
         
         // Update icon once DOM is ready
         if (document.readyState === 'loading') {
