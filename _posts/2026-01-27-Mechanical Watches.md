@@ -2,7 +2,7 @@
 layout: post 
 title: Mechanical Watches
 date: 2026-01-27
-excerpt: For as long as I can remember, I have been fascinated by mechanical watches. I grew up in a time before smartphones and smartwatches, when watches generally fell into two categories: digital and mechanical. I followed in my father’s footsteps and was instantly drawn to mechanical watches.
+excerpt: For as long as I can remember, I have been fascinated by mechanical watches. I grew up in a time before smartphones and smartwatches, when watches generally fell into two categories digital and mechanical. I followed in my father’s footsteps and was instantly drawn to mechanical watches.
 ---
 
 For as long as I can remember, I have been fascinated by mechanical watches. I grew up in a time before smartphones and smartwatches, when watches generally fell into two categories: digital and mechanical. I followed in my father’s footsteps and was instantly drawn to mechanical watches.
