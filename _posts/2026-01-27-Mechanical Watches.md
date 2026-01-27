@@ -1,5 +1,3 @@
-2026-01-27-Mechanical Watches.md
-
 ---
 layout: post 
 title: Mechanical Watches
