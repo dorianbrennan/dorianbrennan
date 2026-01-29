@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- BLOCKING inline script - runs FIRST -->
+    <!-- Inline script to set theme color IMMEDIATELY -->
     <script>
         (function() {
-            var stored = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = stored || (prefersDark ? 'dark' : 'light');
-            var color = theme === 'dark' ? '#13151a' : '#ffffff';
+            const stored = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored || (prefersDark ? 'dark' : 'light');
+            const color = theme === 'dark' ? '#13151a' : '#ffffff';
             
-            // Set theme on html element
+            // Set theme immediately
             document.documentElement.setAttribute('data-theme', theme);
             
-            // Write meta tag immediately
-            document.write('<meta name="theme-color" content="' + color + '">');
+            // Create meta tag with correct color
+            const meta = document.createElement('meta');
+            meta.name = 'theme-color';
+            meta.content = color;
+            document.head.appendChild(meta);
         })();
     </script>
     
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
     <nav>
