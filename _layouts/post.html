@@ -12,15 +12,6 @@ layout: default
         {{ content }}
     </div>
 
-    <div class="post-nav">
-        {% if page.previous.url %}
-        <a href="{{ page.previous.url | relative_url }}" class="link">← {{ page.previous.title }}</a>
-        {% endif %}
-        {% if page.next.url %}
-        <a href="{{ page.next.url | relative_url }}" class="link">{{ page.next.title }} →</a>
-        {% endif %}
-    </div>
-
     <div class="back-link">
         <a href="{{ '/blog/' | relative_url }}" class="link">← Back to blog</a>
     </div>
