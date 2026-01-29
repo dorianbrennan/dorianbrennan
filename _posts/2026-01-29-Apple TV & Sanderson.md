@@ -1,4 +1,3 @@
-2026-01-29-Apple TV & Sanderson.md
 ---
 layout: post
 title: Apple TV & Sanderson
