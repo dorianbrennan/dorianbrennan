@@ -40,6 +40,18 @@ body {
     padding: 0 24px;
 }
 
+/* Tangerine script title styling */
+.script-title {
+    font-family: 'Tangerine', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
 /* Navigation */
 nav {
     position: fixed;
@@ -456,13 +468,13 @@ a.link:hover {
 footer {
     text-align: center;
     padding: 40px 24px;
-    color: var(--accent);
+    color: #1D9A6C;
     font-size: 13px;
     border-top: 1px solid var(--border);
 }
 
-/* Story-specific styling */
-#stories {
+/* Story-specific accent color override */
+.story-full {
     --accent: #7fa8c9;
     --accent-hover: #6a96b8;
 }
@@ -472,39 +484,26 @@ footer {
     --accent-hover: #6a96b8;
 }
 
-.story-full {
-    --accent: #7fa8c9;
-    --accent-hover: #6a96b8;
-}
-
-/* Apply story blue to all story elements */
-#stories footer {
-    color: #7fa8c9;
-}
-
-.story-item .story-content a,
-.story-item .read-more,
+/* Apply story accent to all story page elements */
 .story-full .post-header .post-date,
 .story-full a.link,
 .story-full-content a,
-.story-full .read-more {
+.story-full .read-more,
+.story-item .read-more {
     color: #7fa8c9;
 }
 
-.story-item .story-content a:hover,
-.story-item .read-more:hover,
 .story-full a.link:hover,
 .story-full-content a:hover,
-.story-full .read-more:hover {
+.story-full .read-more:hover,
+.story-item .read-more:hover {
     color: #6a96b8;
 }
 
-.story-item .story-content a,
 .story-full-content a {
     border-bottom-color: #7fa8c9;
 }
 
-.story-item .story-content a:hover,
 .story-full-content a:hover {
     border-bottom-color: #6a96b8;
 }
@@ -556,6 +555,10 @@ footer {
 
     .intro {
         font-size: 16px;
+    }
+
+    .script-title {
+        font-size: 56px;
     }
 
     .home-header {
