@@ -26,7 +26,7 @@
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
-<body class="{% if page.body_class %}{{ page.body_class }}{% endif %}">
+<body{% if page.url contains '/stories' %} class="page-story"{% endif %}>
     <nav>
         <div class="container">
             <ul>
