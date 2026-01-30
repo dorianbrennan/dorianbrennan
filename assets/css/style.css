@@ -42,14 +42,23 @@ body {
 
 /* Tangerine script title styling */
 .script-title {
-    font-family: 'Tangerine', cursive;
-    font-size: 72px;
-    font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    letter-spacing: 2px;
-    line-height: 1.2;
+    font-family: 'Tangerine', cursive !important;
+    font-size: 72px !important;
+    font-weight: 700 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    text-align: center !important;
+    letter-spacing: 2px !important;
+    line-height: 1.2 !important;
+}
+
+/* Additional specificity for blog and stories pages */
+#blog .script-title,
+#stories .script-title {
+    font-family: 'Tangerine', cursive !important;
+    font-size: 72px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
 }
 
 /* Navigation */
@@ -558,7 +567,7 @@ footer {
     }
 
     .script-title {
-        font-size: 56px;
+        font-size: 56px !important;
     }
 
     .home-header {
