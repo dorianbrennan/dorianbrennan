@@ -29,7 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
-<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+{% assign body_class = page.body_class | default: layout.body_class %}
+<body{% if body_class %} class="{{ body_class }}"{% endif %}>
     <a class="skip-link" href="#main">Skip to content</a>
     <nav>
         <div class="container">
