@@ -25,6 +25,7 @@ layout: default
             {% if site.posts.size > 0 %}
                 {% for post in site.posts limit:3 %}
                 <div class="home-post-item">
+                    <a class="row-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}"></a>
                     <div class="home-post-title">
                         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
                     </div>
@@ -41,6 +42,7 @@ layout: default
             {% if site.stories.size > 0 %}
                 {% for story in site.stories limit:3 %}
                 <div class="home-post-item">
+                    <a class="row-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title }}"></a>
                     <div class="home-post-title">
                         <a href="{{ story.url | relative_url }}">{{ story.title }}</a>
                     </div>

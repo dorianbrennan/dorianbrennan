@@ -12,6 +12,7 @@ title: The Considered Frame
     <ul class="post-list">
         {% for post in site.posts %}
         <li class="post-item" style="border-bottom-color: rgba(45, 122, 95, 0.2);">
+            <a class="row-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}"></a>
             <div class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
             <div class="post-date" style="color: var(--accent);">{{ post.date | date: "%B %d, %Y" }}</div>
             

@@ -11,6 +11,7 @@ title: Shadow Evidence
     
     {% for story in site.stories %}
     <div class="story-item">
+        <a class="row-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title }}"></a>
         <div class="story-header">
             <h3 class="story-title">{{ story.title }}</h3>
             <p class="post-date">{{ story.reading_time }}</p>
