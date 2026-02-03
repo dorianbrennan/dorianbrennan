@@ -390,10 +390,13 @@ a.link:hover {
     font-weight: 300;
     margin-bottom: 8px;
     letter-spacing: 0.3px;
+    transition: color 0.2s;
 }
 
 #stories .story-item:hover .story-title,
-#stories .story-item:focus-within .story-title {
+#stories .story-item:focus-within .story-title,
+#stories .story-item .row-link:hover ~ .story-header .story-title,
+#stories .story-item .row-link:focus-visible ~ .story-header .story-title {
     color: #6a96b8;
 }
 
