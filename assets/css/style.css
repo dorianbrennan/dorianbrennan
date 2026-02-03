@@ -393,6 +393,18 @@ a.link:hover {
     transition: color 0.2s;
 }
 
+#stories .story-title-link {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+#stories .story-title-link:hover,
+#stories .story-title-link:focus-visible {
+    color: #6a96b8;
+}
+
 #stories .story-item:hover .story-title,
 #stories .story-item:focus-within .story-title,
 #stories .story-item .row-link:hover ~ .story-header .story-title,

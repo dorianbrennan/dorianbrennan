@@ -14,7 +14,9 @@ body_class: page-story
     <div class="story-item">
         <a class="row-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title }}"></a>
         <div class="story-header">
-            <h3 class="story-title">{{ story.title }}</h3>
+            <h3 class="story-title">
+                <a class="story-title-link" href="{{ story.url | relative_url }}">{{ story.title }}</a>
+            </h3>
             <p class="post-date">{{ story.reading_time }}</p>
         </div>
         <div class="story-content">
