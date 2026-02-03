@@ -61,6 +61,11 @@ body {
     text-align: center !important;
 }
 
+/* Give the blog title a bit more breathing room below the fixed nav */
+#blog .script-title {
+    margin-top: 3.25rem !important;
+}
+
 /* Navigation */
 nav {
     position: fixed;
