@@ -7,7 +7,7 @@ baseurl: ""
 # Author info
 author:
   name: Dorian Brennan
-  email: you@email.com  # TODO: Replace with actual email
+  email: ""  # TODO: Replace with actual email
   location: Sydney
   bio: >
     I'm an architect, photographer, and writer. I'm interested in how design shapes experience, but I write about whatever captures my attention—architecture, technology, photography, books, and the ideas that connect them.
@@ -15,7 +15,7 @@ author:
 social:
   twitter: dorian_brennan
   linkedin: dorian-brennan-54583525
-  github: your_github  # TODO: Replace with actual GitHub username
+  github: ""  # TODO: Replace with actual GitHub username
 
 # Build settings
 markdown: kramdown

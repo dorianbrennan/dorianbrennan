@@ -56,9 +56,9 @@
     function updatePhoto(theme) {
         const photo = document.getElementById('profilePhoto');
         if (photo) {
-            const basePath = '/assets/images/';
-            const photoFile = theme === 'dark' ? 'photo-dark.jpg' : 'photo-light.jpg';
-            photo.src = basePath + photoFile;
+            const lightSrc = photo.getAttribute('data-light') || '/assets/images/photo-light.jpg';
+            const darkSrc = photo.getAttribute('data-dark') || '/assets/images/photo-dark.jpg';
+            photo.src = theme === 'dark' ? darkSrc : lightSrc;
         }
     }
     
