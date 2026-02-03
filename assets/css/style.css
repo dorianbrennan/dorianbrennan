@@ -568,6 +568,11 @@ body.page-story footer a:hover {
     color: #6a96b8;
 }
 
+/* Stories index: blue hover for links */
+body.page-story #stories a:hover {
+    color: #6a96b8;
+}
+
 /* Story-specific accent color override */
 .story-full {
     --accent: #7fa8c9;
