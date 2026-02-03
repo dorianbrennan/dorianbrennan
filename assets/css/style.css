@@ -368,11 +368,11 @@ a.link:hover {
 
 /* Stories */
 #stories .intro {
-    margin-bottom: 60px;
+    margin-bottom: 32px;
 }
 
 .story-item {
-    padding: 48px 0;
+    padding: 32px 0;
     border-bottom: 1px solid var(--border);
     position: relative;
 }
@@ -386,8 +386,8 @@ a.link:hover {
 }
 
 .story-header {
-    margin-top: 40px;
-    margin-bottom: 32px;
+    margin-top: 20px;
+    margin-bottom: 24px;
 }
 
 .story-title {
@@ -421,11 +421,11 @@ a.link:hover {
     font-size: 17px;
     line-height: 1.9;
     color: var(--text);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .story-content p {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     color: var(--text);
 }
 
