@@ -392,6 +392,11 @@ a.link:hover {
     letter-spacing: 0.3px;
 }
 
+#stories .story-item:hover .story-title,
+#stories .story-item:focus-within .story-title {
+    color: #6a96b8;
+}
+
 .story-content {
     font-size: 17px;
     line-height: 1.9;
