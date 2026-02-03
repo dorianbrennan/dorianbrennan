@@ -67,11 +67,11 @@ body {
 }
 
 #stories {
-    padding-top: 3.25rem;
+    padding-top: 0;
 }
 
 #stories .script-title {
-    margin-top: 1rem !important;
+    margin-top: 3.25rem !important;
     padding-top: 0.2em !important;
     line-height: 1.3 !important;
 }
