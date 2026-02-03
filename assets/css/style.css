@@ -66,6 +66,10 @@ body {
     margin-top: 3.25rem !important;
 }
 
+#stories .script-title {
+    margin-top: 3.25rem !important;
+}
+
 /* Navigation */
 nav {
     position: fixed;
