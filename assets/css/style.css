@@ -66,13 +66,12 @@ body {
     margin-top: 3.25rem !important;
 }
 
-#stories .script-title {
-    margin-top: 3.25rem !important;
+#stories {
+    padding-top: 3.25rem;
 }
 
-/* Prevent margin collapse so the title spacing matches the blog page */
-#stories {
-    padding-top: 1px;
+#stories .script-title {
+    margin-top: 0 !important;
 }
 
 /* Navigation */
