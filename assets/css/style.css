@@ -327,6 +327,50 @@ a.link:hover {
     line-height: 1.8;
 }
 
+/* About */
+#about h1 {
+    margin-top: 1.5rem;
+}
+
+#about .intro {
+    margin-bottom: 4rem;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+#about .intro p + p {
+    margin-top: 1.5rem;
+}
+
+#about .section-divider {
+    height: 1px;
+    background-color: rgba(45, 122, 95, 0.35);
+    margin: 0 auto 3rem;
+    width: min(520px, 90%);
+    border-radius: 2px;
+}
+
+#about .cv-section {
+    margin-top: 4rem;
+}
+
+#about .cv-section h2,
+#about .connect-section h2 {
+    margin-top: 0;
+}
+
+#about .cv-item {
+    margin-top: 1.5rem;
+}
+
+#about .cv-item p {
+    margin-top: 0.75rem;
+}
+
+#about .connect-section {
+    margin-top: 4rem;
+}
+
 /* Blog */
 .post-list {
     list-style: none;
