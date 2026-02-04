@@ -328,8 +328,12 @@ a.link:hover {
 }
 
 /* About */
+#about {
+    padding-top: 0.5rem;
+}
+
 #about h1 {
-    margin-top: 1.5rem;
+    margin-top: 2.75rem;
 }
 
 #about .intro {
@@ -342,16 +346,10 @@ a.link:hover {
     margin-top: 1.5rem;
 }
 
-#about .section-divider {
-    height: 1px;
-    background-color: rgba(45, 122, 95, 0.35);
-    margin: 0 auto 3rem;
-    width: min(520px, 90%);
-    border-radius: 2px;
-}
-
 #about .cv-section {
-    margin-top: 4rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(45, 122, 95, 0.35);
 }
 
 #about .cv-section h2,
