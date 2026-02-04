@@ -377,13 +377,13 @@ a.link:hover {
     margin-bottom: 32px;
 }
 
-.story-item {
-    padding: 32px 0;
+#stories .story-item {
+    padding: 8px 0;
     border-bottom: 1px solid var(--border);
     position: relative;
 }
 
-.story-item:first-of-type {
+#stories .story-item:first-of-type {
     padding-top: 0;
 }
 
@@ -391,9 +391,9 @@ a.link:hover {
     border-bottom: none;
 }
 
-.story-header {
-    margin-top: 20px;
-    margin-bottom: 24px;
+#stories .story-header {
+    margin-top: 0;
+    margin-bottom: 12px;
 }
 
 .story-title {
@@ -423,15 +423,15 @@ a.link:hover {
     color: #6a96b8;
 }
 
-.story-content {
+#stories .story-content {
     font-size: 17px;
     line-height: 1.9;
     color: var(--text);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
-.story-content p {
-    margin-bottom: 16px;
+#stories .story-content p {
+    margin-bottom: 12px;
     color: var(--text);
 }
 
