@@ -423,6 +423,18 @@ body.page-about main {
     margin-bottom: 32px;
 }
 
+#stories .title-underline {
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    border-bottom: 2px solid #7fa8c9;
+    border-radius: 2px;
+}
+
+#stories .title-underline span {
+    visibility: hidden;
+    line-height: 1;
+}
+
 #stories .story-item {
     padding: 8px 0;
     border-bottom: 1px solid var(--border);
