@@ -389,6 +389,52 @@ body.page-about main {
     margin-top: 4rem;
 }
 
+@media (min-width: 641px) {
+    body.page-about main {
+        margin-top: 116px;
+        min-height: calc(100vh - 196px);
+        display: flex;
+        align-items: stretch;
+    }
+
+    #about {
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 8px;
+    }
+
+    #about h1 {
+        margin-bottom: 16px;
+    }
+
+    #about .intro {
+        margin-bottom: 0;
+    }
+
+    #about .intro p {
+        margin-bottom: 12px;
+    }
+
+    #about .intro p + p {
+        margin-top: 0;
+    }
+
+    #about .connect-section {
+        margin-top: 20px;
+    }
+
+    #about .connect-section h2 {
+        margin-bottom: 8px;
+    }
+
+    #about .socials {
+        margin-top: 10px;
+    }
+}
+
 /* Blog */
 .post-list {
     list-style: none;
