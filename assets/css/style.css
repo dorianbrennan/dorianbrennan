@@ -241,30 +241,40 @@ a.link:hover {
 }
 
 /* Landing page */
+body.page-home main {
+    margin-top: 88px;
+    min-height: auto;
+}
+
+body.page-home footer {
+    padding: 18px 24px;
+}
+
 #home {
-    padding: 56px 0 20px;
+    padding: 24px 0 4px;
     font-weight: 200;
     letter-spacing: 0.3px;
-    min-height: calc(100vh - 190px);
+    min-height: calc(100vh - 146px);
 }
 
 #home h1 {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 200;
     letter-spacing: 0.5px;
+    margin-bottom: 12px;
 }
 
 .home-header {
     display: grid;
-    grid-template-columns: 1fr 240px;
-    gap: 44px;
-    margin-bottom: 44px;
+    grid-template-columns: 1fr 200px;
+    gap: 28px;
+    margin-bottom: 20px;
     align-items: start;
 }
 
 .home-photo {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
     background-color: var(--border);
     border-radius: 10px;
     overflow: hidden;
@@ -279,30 +289,31 @@ a.link:hover {
 .home-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 20px;
+    gap: 28px;
+    margin-top: 6px;
 }
 
 .home-column h2 {
     margin-top: 0;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 300;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 6px;
 }
 
 .home-post-item {
-    margin-bottom: 14px;
+    margin-bottom: 2px;
     position: relative;
-    padding: 8px 0;
-    min-height: 40px;
+    padding: 4px 0;
+    min-height: 34px;
 }
 
 .home-post-title {
     font-size: 16px;
     font-weight: 300;
-    margin-bottom: 4px;
+    margin-bottom: 1px;
+    line-height: 1.3;
 }
 
 .home-post-title a {
@@ -318,14 +329,18 @@ a.link:hover {
 }
 
 .home-post-date {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-secondary);
     letter-spacing: 0.5px;
 }
 
 .intro {
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 1.65;
+}
+
+.home-text .intro p {
+    margin-bottom: 0;
 }
 
 /* About */
@@ -747,6 +762,14 @@ body.page-story #stories a:hover {
 
 /* Responsive */
 @media (max-width: 640px) {
+    body.page-home main {
+        margin-top: 100px;
+    }
+
+    body.page-home footer {
+        padding: 40px 24px;
+    }
+
     #home {
         min-height: auto;
         padding: 72px 0 20px;
