@@ -290,13 +290,13 @@ body.page-home footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
-    margin-top: 6px;
+    margin-top: 24px;
 }
 
 .home-column h2 {
     margin-top: 0;
     font-size: 17px;
-    font-weight: 300;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 6px;
