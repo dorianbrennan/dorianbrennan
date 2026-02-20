@@ -46,9 +46,9 @@ layout: default
                     <div class="home-post-title">
                         <a href="{{ story.url | relative_url }}">{{ story.title }}</a>
                     </div>
-                    {% if story.reading_time %}
-                        <div class="home-post-date">{{ story.reading_time }}</div>
-                    {% endif %}
+                    <div class="home-post-date">
+                        {{ story.date | date: "%B %d, %Y" }}{% if story.reading_time %} · {{ story.reading_time }}{% endif %}
+                    </div>
                 </div>
                 {% endfor %}
             {% else %}
