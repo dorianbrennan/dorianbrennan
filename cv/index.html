@@ -390,6 +390,9 @@ nav .container {
     object-position: center;
     display: block;
     transition: transform 0.4s ease;
+    cursor: zoom-in;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .cv-filmstrip-item:hover img {
@@ -398,11 +401,47 @@ nav .container {
 
 /* Use extra crop for images that include built-in letterboxing */
 .cv-filmstrip-item img.cv-image-tight-fill {
-    transform: scale(1.14);
+    transform: scale(1.42);
+    object-position: center 48%;
 }
 
 .cv-filmstrip-item:hover img.cv-image-tight-fill {
-    transform: scale(1.17);
+    transform: scale(1.45);
+}
+
+/* Lightbox */
+.cv-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 11, 14, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1200;
+}
+
+.cv-lightbox.is-open {
+    display: flex;
+}
+
+.cv-lightbox-dialog {
+    width: min(82vw, 920px);
+    max-height: 80vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    background: #111;
+}
+
+.cv-lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 /* Placeholder for missing images */
@@ -660,7 +699,7 @@ nav .container {
 
             <div class="cv-filmstrip">
                 <div class="cv-filmstrip-item">
-                    <img class="cv-image-tight-fill" src="/assets/images/projects/NTH-Image1.jpg" alt="New Toowoomba Hospital">
+                    <img class="cv-image-tight-fill cv-lightbox-trigger" src="/assets/images/projects/NTH-Image1.jpg" alt="New Toowoomba Hospital" draggable="false">
                 </div>
                 <div class="cv-filmstrip-item">
                     <!-- <img src="/assets/images/projects/qrh-02.jpg" alt="Queensland Regional Hospital"> -->
@@ -876,6 +915,12 @@ nav .container {
 
 </section>
 
+<div class="cv-lightbox" id="cvLightbox" aria-hidden="true">
+    <div class="cv-lightbox-dialog">
+        <img id="cvLightboxImage" class="cv-lightbox-image" src="" alt="" draggable="false">
+    </div>
+</div>
+
 <script>
 (function () {
     const buttons = document.querySelectorAll('.cv-filter-btn');
@@ -898,6 +943,50 @@ nav .container {
                 }
             });
         });
+    });
+
+    const lightbox = document.getElementById('cvLightbox');
+    const lightboxImage = document.getElementById('cvLightboxImage');
+    const lightboxTriggers = document.querySelectorAll('.cv-lightbox-trigger');
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    lightboxTriggers.forEach(function (img) {
+        img.addEventListener('click', function () {
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt || '';
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        });
+
+        img.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+        });
+    });
+
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    lightbox.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+    });
+
+    lightboxImage.addEventListener('dragstart', function (event) {
+        event.preventDefault();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
     });
 })();
 </script>
