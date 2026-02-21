@@ -413,16 +413,25 @@ nav .container {
 .cv-lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(10, 11, 14, 0.75);
-    display: none;
+    background: rgba(5, 7, 10, 0.9);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     align-items: center;
     justify-content: center;
     padding: 24px;
     z-index: 1200;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.24s ease, visibility 0s linear 0.24s;
 }
 
 .cv-lightbox.is-open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.24s ease;
 }
 
 .cv-lightbox-dialog {
@@ -431,7 +440,16 @@ nav .container {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-    background: #111;
+    background: #07090c;
+    opacity: 0.85;
+    transform: translateY(10px) scale(0.985);
+    transition: transform 0.24s ease, opacity 0.24s ease;
+    will-change: transform, opacity;
+}
+
+.cv-lightbox.is-open .cv-lightbox-dialog {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .cv-lightbox-image {
@@ -439,9 +457,29 @@ nav .container {
     height: 100%;
     max-height: 80vh;
     object-fit: contain;
+    background: #07090c;
     display: block;
     -webkit-user-drag: none;
     user-select: none;
+    opacity: 1;
+    transition: opacity 0.16s ease;
+}
+
+.cv-lightbox-image.is-loading {
+    opacity: 0;
+}
+
+.cv-lightbox-image.cv-image-tight-fill {
+    object-fit: cover;
+    object-position: center 48%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cv-lightbox,
+    .cv-lightbox-dialog,
+    .cv-lightbox-image {
+        transition: none;
+    }
 }
 
 /* Placeholder for missing images */
@@ -1028,6 +1066,27 @@ nav .container {
     const lightbox = document.getElementById('cvLightbox');
     const lightboxImage = document.getElementById('cvLightboxImage');
     const lightboxTriggers = document.querySelectorAll('.cv-lightbox-trigger');
+    const warmedImages = new Set();
+
+    function warmImage(src) {
+        if (!src || warmedImages.has(src)) return;
+        const preloader = new Image();
+        preloader.src = src;
+        if (typeof preloader.decode === 'function') {
+            preloader.decode().catch(function () {});
+        }
+        warmedImages.add(src);
+    }
+
+    function syncImageReadyState() {
+        if (typeof lightboxImage.decode === 'function') {
+            lightboxImage.decode().catch(function () {}).finally(function () {
+                lightboxImage.classList.remove('is-loading');
+            });
+            return;
+        }
+        lightboxImage.classList.remove('is-loading');
+    }
 
     function closeLightbox() {
         lightbox.classList.remove('is-open');
@@ -1036,12 +1095,32 @@ nav .container {
     }
 
     lightboxTriggers.forEach(function (img) {
+        const source = img.currentSrc || img.src;
+
+        img.addEventListener('pointerenter', function () {
+            warmImage(source);
+        }, { passive: true });
+
+        img.addEventListener('focus', function () {
+            warmImage(source);
+        });
+
+        img.addEventListener('touchstart', function () {
+            warmImage(source);
+        }, { passive: true });
+
         img.addEventListener('click', function () {
-            lightboxImage.src = img.src;
+            const selectedSource = img.currentSrc || img.src;
+
+            warmImage(selectedSource);
+            lightboxImage.classList.add('is-loading');
+            lightboxImage.classList.toggle('cv-image-tight-fill', img.classList.contains('cv-image-tight-fill'));
+            lightboxImage.src = selectedSource;
             lightboxImage.alt = img.alt || '';
             lightbox.classList.add('is-open');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            syncImageReadyState();
         });
 
         img.addEventListener('contextmenu', function (event) {
