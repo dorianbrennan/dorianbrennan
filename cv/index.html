@@ -676,8 +676,8 @@ body.page-cv main.container {
 }
 
 .cv-project-role {
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.75;
     color: var(--text-secondary);
 }
 
@@ -1273,7 +1273,7 @@ body.page-cv main.container {
     const lightboxPrev = document.getElementById('cvLightboxPrev');
     const lightboxNext = document.getElementById('cvLightboxNext');
     const lightboxImage = document.getElementById('cvLightboxImage');
-    const lightboxTriggers = document.querySelectorAll('.cv-lightbox-trigger');
+    const lightboxTriggers = document.querySelectorAll('.cv-filmstrip-item img');
     const warmedImages = new Set();
     let activeGallery = [];
     let activeIndex = 0;
@@ -1352,7 +1352,7 @@ body.page-cv main.container {
         img.addEventListener('click', function () {
             const filmstrip = img.closest('.cv-filmstrip');
             activeGallery = filmstrip
-                ? Array.from(filmstrip.querySelectorAll('.cv-lightbox-trigger'))
+                ? Array.from(filmstrip.querySelectorAll('.cv-filmstrip-item img'))
                 : [img];
             activeIndex = Math.max(activeGallery.indexOf(img), 0);
             updateLightboxNav();
