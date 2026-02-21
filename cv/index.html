@@ -38,6 +38,76 @@ nav .container {
     padding: calc(var(--nav-height, 100px) + 28px) 40px 80px;
 }
 
+.cv-layout {
+    margin: 0 auto;
+}
+
+.cv-main-content {
+    min-width: 0;
+}
+
+.cv-jump-target {
+    scroll-margin-top: calc(var(--nav-height, 100px) + 26px);
+}
+
+.cv-side-nav {
+    display: none;
+}
+
+.cv-side-nav-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0 0 14px;
+}
+
+.cv-side-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cv-side-nav-links li {
+    margin: 0 0 8px;
+}
+
+.cv-side-link {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cv-side-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.cv-side-link.active,
+.cv-side-link[aria-current="true"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+@media (min-width: 1080px) {
+    .cv-layout {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 48px;
+        align-items: start;
+    }
+
+    .cv-side-nav {
+        display: block;
+        position: sticky;
+        top: calc(var(--nav-height, 100px) + 26px);
+    }
+}
+
 @media (max-width: 640px) {
     body.page-cv main {
         margin-top: 0;
@@ -666,13 +736,26 @@ nav .container {
 }
 
 @media print {
-    nav, footer, .cv-print-note { display: none; }
+    nav, footer, .cv-print-note, .cv-side-nav { display: none; }
     main { margin-top: 0; }
     .cv-project-item { page-break-inside: avoid; }
 }
 </style>
 
 <section class="cv-page">
+    <div class="cv-layout">
+    <aside class="cv-side-nav" aria-label="CV section navigation">
+        <p class="cv-side-nav-label">Jump to</p>
+        <ul class="cv-side-nav-links">
+            <li><a class="cv-side-link" href="#profile">Profile</a></li>
+            <li><a class="cv-side-link" href="#experience">Experience</a></li>
+            <li><a class="cv-side-link" href="#projects">Selected Projects</a></li>
+            <li><a class="cv-side-link" href="#education">Education</a></li>
+            <li><a class="cv-side-link" href="#skills">Skills</a></li>
+        </ul>
+    </aside>
+
+    <div class="cv-main-content">
 
     <!-- ── Header ───────────────────────────────────────────── -->
     <div class="cv-hero">
@@ -685,7 +768,7 @@ nav .container {
     </div>
 
     <!-- ── Profile ──────────────────────────────────────────── -->
-    <div style="margin-bottom: 0;">
+    <div id="profile" class="cv-jump-target" style="margin-bottom: 0;">
         <h2 class="cv-section-heading">Profile</h2>
         <p style="font-size: 16px; line-height: 1.9; color: var(--text-secondary); max-width: 760px; margin-bottom: 1.2rem; font-weight: 300;">
             An accomplished Architect and Design Practitioner with over 18 years of experience,
@@ -707,7 +790,7 @@ nav .container {
     <hr class="cv-divider">
 
     <!-- ── Experience ───────────────────────────────────────── -->
-    <div class="cv-experience-block">
+    <div id="experience" class="cv-experience-block cv-jump-target">
         <h2 class="cv-section-heading">Experience</h2>
 
         <div class="cv-experience-item">
@@ -752,7 +835,7 @@ nav .container {
     <hr class="cv-divider">
 
     <!-- ── Selected Projects ────────────────────────────────── -->
-    <div class="cv-projects-block">
+    <div id="projects" class="cv-projects-block cv-jump-target">
         <h2 class="cv-section-heading">Selected Projects</h2>
 
         <div class="cv-filter-bar">
@@ -986,7 +1069,7 @@ nav .container {
     <hr class="cv-divider">
 
     <!-- ── Education ────────────────────────────────────────── -->
-    <div class="cv-education-block">
+    <div id="education" class="cv-education-block cv-jump-target">
         <h2 class="cv-section-heading">Education &amp; Registration</h2>
 
         <div class="cv-education-item">
@@ -1022,7 +1105,7 @@ nav .container {
     <hr class="cv-divider">
 
     <!-- ── Skills ───────────────────────────────────────────── -->
-    <div class="cv-skills-block">
+    <div id="skills" class="cv-skills-block cv-jump-target">
         <h2 class="cv-section-heading">Skills &amp; Software</h2>
         <div class="cv-skills-grid">
             <div>
@@ -1059,6 +1142,8 @@ nav .container {
         <button class="cv-print-btn" onclick="window.print()">Print / Save PDF</button>
     </div>
 
+    </div>
+    </div>
 </section>
 
 <div class="cv-lightbox" id="cvLightbox" aria-hidden="true">
@@ -1072,6 +1157,59 @@ nav .container {
 (function () {
     const buttons = document.querySelectorAll('.cv-filter-btn');
     const projects = document.querySelectorAll('.cv-project-item');
+    const sideLinks = Array.from(document.querySelectorAll('.cv-side-link'));
+
+    if (sideLinks.length) {
+        const navSections = sideLinks
+            .map(function (link) {
+                const hash = link.getAttribute('href') || '';
+                const targetId = hash.replace('#', '');
+                return {
+                    link: link,
+                    id: targetId,
+                    section: document.getElementById(targetId)
+                };
+            })
+            .filter(function (item) {
+                return item.section;
+            });
+
+        function setActiveNav(targetId) {
+            navSections.forEach(function (item) {
+                const isActive = item.id === targetId;
+                item.link.classList.toggle('active', isActive);
+                item.link.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        }
+
+        function updateActiveNavFromScroll() {
+            const currentOffset = (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'), 10) || 100) + 40;
+            let activeId = navSections[0] ? navSections[0].id : '';
+
+            navSections.forEach(function (item) {
+                if (item.section.getBoundingClientRect().top <= currentOffset) {
+                    activeId = item.id;
+                }
+            });
+
+            if (activeId) {
+                setActiveNav(activeId);
+            }
+        }
+
+        sideLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                const targetId = (link.getAttribute('href') || '').replace('#', '');
+                if (targetId) {
+                    setActiveNav(targetId);
+                }
+            });
+        });
+
+        window.addEventListener('scroll', updateActiveNavFromScroll, { passive: true });
+        window.addEventListener('resize', updateActiveNavFromScroll);
+        updateActiveNavFromScroll();
+    }
 
     buttons.forEach(function (btn) {
         btn.addEventListener('click', function () {
