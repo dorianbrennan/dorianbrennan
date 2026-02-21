@@ -38,6 +38,10 @@ nav .container {
     padding: calc(var(--nav-height, 100px) + 28px) 40px 80px;
 }
 
+body.page-cv main.container {
+    max-width: 1360px;
+}
+
 .cv-layout {
     margin: 0 auto;
 }
@@ -52,14 +56,6 @@ nav .container {
 
 .cv-side-nav {
     display: none;
-}
-
-.cv-side-nav-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin: 0 0 14px;
 }
 
 .cv-side-nav-links {
@@ -94,6 +90,11 @@ nav .container {
 }
 
 @media (min-width: 1080px) {
+    .cv-page {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
     .cv-layout {
         display: grid;
         grid-template-columns: 190px minmax(0, 1fr);
@@ -745,7 +746,6 @@ nav .container {
 <section class="cv-page">
     <div class="cv-layout">
     <aside class="cv-side-nav" aria-label="CV section navigation">
-        <p class="cv-side-nav-label">Jump to</p>
         <ul class="cv-side-nav-links">
             <li><a class="cv-side-link" href="#profile">Profile</a></li>
             <li><a class="cv-side-link" href="#experience">Experience</a></li>
@@ -990,7 +990,6 @@ nav .container {
                 Project Architect responsible for design development, user group meetings, consultant coordination and site visits.
             </div>
         </div>
-    </div>
 
     <!-- Project 5 -->
         <div class="cv-project-item" data-category="hospitality">
@@ -1025,7 +1024,6 @@ nav .container {
                 Project Architect responsible for design development, tender documentation, services coordination, client meetings and site visits.
             </div>
         </div>
-    </div>
 
      <!-- Project 6 -->
         <div class="cv-project-item" data-category="aged-care">
