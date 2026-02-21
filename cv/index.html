@@ -452,6 +452,36 @@ nav .container {
     transform: translateY(0) scale(1);
 }
 
+.cv-lightbox-close {
+    position: absolute;
+    top: max(14px, env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(6, 8, 12, 0.72);
+    color: #f3f6fa;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.cv-lightbox-close:hover {
+    transform: scale(1.04);
+    background: rgba(8, 12, 18, 0.9);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.cv-lightbox-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 .cv-lightbox-image {
     width: 100%;
     height: 100%;
@@ -1034,6 +1064,7 @@ nav .container {
 </section>
 
 <div class="cv-lightbox" id="cvLightbox" aria-hidden="true">
+    <button class="cv-lightbox-close" id="cvLightboxClose" type="button" aria-label="Close image">&times;</button>
     <div class="cv-lightbox-dialog">
         <img id="cvLightboxImage" class="cv-lightbox-image" src="" alt="" draggable="false">
     </div>
@@ -1064,6 +1095,7 @@ nav .container {
     });
 
     const lightbox = document.getElementById('cvLightbox');
+    const lightboxClose = document.getElementById('cvLightboxClose');
     const lightboxImage = document.getElementById('cvLightboxImage');
     const lightboxTriggers = document.querySelectorAll('.cv-lightbox-trigger');
     const warmedImages = new Set();
@@ -1133,6 +1165,10 @@ nav .container {
             closeLightbox();
         }
     });
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
 
     lightbox.addEventListener('contextmenu', function (event) {
         event.preventDefault();
