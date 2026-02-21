@@ -1,0 +1,898 @@
+---
+layout: default
+title: CV
+sitemap: false
+---
+
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ── Override site font for CV page only ────────────────── */
+.cv-page,
+.cv-page h1, .cv-page h2, .cv-page h3,
+.cv-page p, .cv-page a, .cv-page span,
+.cv-page li, .cv-page div,
+.cv-page button {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* ── CV-specific styles ─────────────────────────────────── */
+
+.cv-page {
+    padding: 60px 40px 80px;
+}
+
+@media (max-width: 640px) {
+    .cv-page {
+        padding: 40px 20px 60px;
+    }
+}
+
+/* Hero header */
+.cv-hero {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.cv-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+}
+
+.cv-name {
+    font-size: 52px;
+    font-weight: 200;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.cv-credentials {
+    font-size: 15px;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.cv-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+}
+
+.cv-contact a,
+.cv-contact span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+}
+
+.cv-contact a:hover {
+    color: var(--accent);
+}
+
+.cv-contact .cv-location {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+/* Section headings */
+.cv-section-heading {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 2rem;
+    margin-top: 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Blue accent divider between sections */
+.cv-divider {
+    border: none;
+    border-top: none;
+    height: 2px;
+    background-color: var(--accent);
+    margin: 3.5rem 0;
+    display: block;
+}
+
+/* Experience block */
+.cv-experience-block {
+    margin-bottom: 4rem;
+}
+
+.cv-experience-item {
+    margin-bottom: 2.5rem;
+}
+
+.cv-experience-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cv-role {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.2px;
+}
+
+.cv-period {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.cv-employer {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.cv-experience-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+/* Skills grid */
+.cv-skills-block {
+    margin-bottom: 4rem;
+}
+
+.cv-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.cv-skill-group-title {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.cv-skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cv-skill-list li {
+    font-size: 14px;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.cv-skill-list li:last-child {
+    border-bottom: none;
+}
+
+/* Education */
+.cv-education-block {
+    margin-bottom: 4rem;
+}
+
+.cv-education-item {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cv-degree {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.cv-school {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.cv-education-year {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* ── Projects section ─────────────────────────────────────── */
+.cv-projects-block {
+    margin-bottom: 4rem;
+}
+
+.cv-project-item {
+    margin-bottom: 1.5rem;
+    padding: 2rem 2rem 2rem;
+    border-bottom: none;
+    background-color: #eef4f8;
+    border-radius: 10px;
+    border: 1px solid #d6e6f0;
+}
+
+[data-theme="dark"] .cv-project-item {
+    background-color: #1a2530;
+    border-color: #253445;
+}
+
+.cv-project-item:last-child {
+    margin-bottom: 0;
+}
+
+.cv-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.cv-project-name {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+.cv-project-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.cv-project-type {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+/* ── Filter buttons ─────────────────────────────────────── */
+.cv-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.cv-filter-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cv-filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.cv-filter-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* Hidden project items */
+.cv-project-item.hidden {
+    display: none;
+}
+
+/* Smooth reveal */
+.cv-project-item {
+    transition: opacity 0.2s ease;
+}
+.cv-filmstrip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    /* Hide scrollbar but keep scrollability */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.cv-filmstrip::-webkit-scrollbar {
+    height: 3px;
+}
+
+.cv-filmstrip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cv-filmstrip::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 2px;
+}
+
+.cv-filmstrip-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 420px;
+    height: 260px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cv-filmstrip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.cv-filmstrip-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Placeholder for missing images */
+.cv-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.cv-img-placeholder svg {
+    opacity: 0.3;
+}
+
+.cv-filmstrip-hint {
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    margin-top: -6px;
+    opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+    .cv-filmstrip-item {
+        width: 80vw;
+        height: 200px;
+    }
+}
+
+.cv-project-description {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.cv-project-role {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.cv-project-role strong {
+    color: var(--text);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Awards & memberships */
+.cv-awards-block {
+    margin-bottom: 4rem;
+}
+
+.cv-award-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cv-award-item:last-child {
+    border-bottom: none;
+}
+
+.cv-award-name {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 300;
+}
+
+.cv-award-year {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Print-friendly download hint */
+.cv-print-note {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cv-print-btn {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.cv-print-btn:hover {
+    border-color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .cv-name { font-size: 36px; }
+
+    .cv-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cv-contact {
+        text-align: left;
+    }
+
+    .cv-skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .cv-project-images {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-project-images img,
+    .cv-img-placeholder {
+        height: 200px;
+    }
+}
+
+@media print {
+    nav, footer, .cv-print-note { display: none; }
+    main { margin-top: 0; }
+    .cv-project-item { page-break-inside: avoid; }
+}
+</style>
+
+<section class="cv-page">
+
+    <!-- ── Header ───────────────────────────────────────────── -->
+    <div class="cv-hero">
+        <div class="cv-hero-inner">
+            <div>
+                <h1 class="cv-name">Dorian Brennan</h1>
+                <p class="cv-credentials">Registered Architect NSW &nbsp;·&nbsp; RAIA</p>
+            </div>
+            <div class="cv-contact">
+                <span class="cv-location">Sydney, Australia</span>
+                <a href="mailto:you@email.com">you@email.com</a>
+                <a href="https://dorianbrennan.com" target="_blank">dorianbrennan.com</a>
+                <a href="https://linkedin.com/in/dorian-brennan-54583525" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Profile ──────────────────────────────────────────── -->
+    <div style="margin-bottom: 0;">
+        <h2 class="cv-section-heading">Profile</h2>
+        <p style="font-size: 16px; line-height: 1.9; color: var(--text-secondary); max-width: 760px; margin-bottom: 1.2rem; font-weight: 300;">
+            An accomplished Architect and Design Practitioner with over 18 years of experience,
+            specialising in Building Information Modelling (BIM). I have led and contributed to numerous
+            award-winning projects across Australia, delivering outcomes across a broad range of sectors
+            including health, hospitality, integrated communities, residential, mixed-use, education, sport,
+            public, and justice.
+        </p>
+        <p style="font-size: 16px; line-height: 1.9; color: var(--text-secondary); max-width: 760px; margin-bottom: 0; font-weight: 300;">
+            As a project lead and BIM specialist, I bring extensive expertise across all project stages, from
+            conceptual design through to construction. I am committed to innovation and design
+            excellence, demonstrated through a hands-on approach to project leadership, technical
+            coordination, and team training. My multidisciplinary skill set and depth of experience enable
+            me to contribute effectively to complex, high-profile projects that successfully balance client
+            objectives with community outcomes.
+        </p>
+    </div>
+
+    <hr class="cv-divider">
+
+    <!-- ── Experience ───────────────────────────────────────── -->
+    <div class="cv-experience-block">
+        <h2 class="cv-section-heading">Experience</h2>
+
+        <div class="cv-experience-item">
+            <div class="cv-experience-row">
+                <span class="cv-role">Associate — Health Architect</span>
+                <span class="cv-period">2024 – Present</span>
+            </div>
+            <div class="cv-employer">Jacobs, Sydney</div>
+            <p>Shell and core lead for a multi-billion dollar hospital in Queensland. Responsible for managing a team delivering all structure, facade, and coordination across the full shell and core package.</p>
+        </div>
+
+        <div class="cv-experience-item">
+            <div class="cv-experience-row">
+                <span class="cv-role">Associate Architect</span>
+                <span class="cv-period">2022 – 2024</span>
+            </div>
+            <div class="cv-employer">NBRS, Sydney</div>
+            <p>Delivered a range of healthcare projects from concept through construction. 
+               Coordinated with clinical planners, engineers, and builders to achieve compliant, functional, and considered outcomes.</p>
+        </div>
+
+        <div class="cv-experience-item">
+            <div class="cv-experience-row">
+                <span class="cv-role">Associate Architect</span>
+                <span class="cv-period">2016 – 2022</span>
+            </div>
+            <div class="cv-employer">PTW, Sydney</div>
+            <p>Contributed to residential and mixed-use projects across all stages. Developed skills in design documentation, 
+               client liaison, and coordination of consultant teams during construction.</p>
+        </div>
+    </div>
+
+    <hr class="cv-divider">
+
+    <!-- ── Selected Projects ────────────────────────────────── -->
+    <div class="cv-projects-block">
+        <h2 class="cv-section-heading">Selected Projects</h2>
+
+        <div class="cv-filter-bar">
+            <button class="cv-filter-btn active" data-filter="all">All</button>
+            <button class="cv-filter-btn" data-filter="health">Health</button>
+            <button class="cv-filter-btn" data-filter="aged-care">Aged Care</button>
+            <button class="cv-filter-btn" data-filter="education">Education</button>
+            <button class="cv-filter-btn" data-filter="justice">Justice</button>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="cv-project-item" data-category="health">
+            <div class="cv-project-header">
+                <h3 class="cv-project-name">Queensland Regional Hospital</h3>
+                <span class="cv-project-meta">Queensland &nbsp;·&nbsp; 2022 – Ongoing</span>
+            </div>
+            <p class="cv-project-type">Healthcare &nbsp;·&nbsp; $2.1B</p>
+
+            <div class="cv-filmstrip">
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/qrh-01.jpg" alt="Queensland Regional Hospital"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/qrh-02.jpg" alt="Queensland Regional Hospital"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+            </div>
+
+            <p class="cv-project-description">
+                A major greenfield hospital delivering 600 beds across acute, sub-acute, and 
+                community health services. The project integrates contemporary clinical planning 
+                principles with a civic presence that responds to its regional context.
+            </p>
+            <div class="cv-project-role">
+                <strong>Role</strong>
+                Senior Associate and lead architect responsible for design development, consultant 
+                coordination, and stakeholder engagement across all departments. Leading a team 
+                of eight architects through design development and documentation phases.
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="cv-project-item" data-category="health">
+            <div class="cv-project-header">
+                <h3 class="cv-project-name">Metropolitan Oncology Centre</h3>
+                <span class="cv-project-meta">Sydney &nbsp;·&nbsp; 2019 – 2022</span>
+            </div>
+            <p class="cv-project-type">Healthcare &nbsp;·&nbsp; $180M</p>
+
+            <div class="cv-filmstrip">
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/oncology-01.jpg" alt="Metropolitan Oncology Centre"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/oncology-02.jpg" alt="Metropolitan Oncology Centre"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+            </div>
+
+            <p class="cv-project-description">
+                A purpose-built cancer care facility integrating day oncology, radiation therapy, 
+                and inpatient wards within an existing hospital campus. The design prioritises 
+                wayfinding, natural light, and calming materiality for patients undergoing long-term treatment.
+            </p>
+            <div class="cv-project-role">
+                <strong>Role</strong>
+                Project Architect from developed design through to construction completion. 
+                Responsible for managing documentation, RFI coordination, and site administration 
+                during the 18-month construction phase.
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="cv-project-item" data-category="health">
+            <div class="cv-project-header">
+                <h3 class="cv-project-name">Community Health Hub</h3>
+                <span class="cv-project-meta">Western Sydney &nbsp;·&nbsp; 2017 – 2019</span>
+            </div>
+            <p class="cv-project-type">Civic &nbsp;·&nbsp; $22M</p>
+
+            <div class="cv-filmstrip">
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/chh-01.jpg" alt="Community Health Hub"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/chh-02.jpg" alt="Community Health Hub"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+            </div>
+
+            <p class="cv-project-description">
+                A mixed-use community health facility bringing together primary care, mental health 
+                services, and allied health practitioners under one roof. The building was designed 
+                around a central courtyard to foster a sense of calm and connection.
+            </p>
+            <div class="cv-project-role">
+                <strong>Role</strong>
+                Project Architect from concept design through to construction documentation. 
+                Worked directly with LHD clinical planners and the local community to 
+                develop a brief that balanced operational efficiency with a welcoming public presence.
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="cv-project-item" data-category="health">
+            <div class="cv-project-header">
+                <h3 class="cv-project-name">Terrace House Restoration &amp; Extension</h3>
+                <span class="cv-project-meta">Newtown, Sydney &nbsp;·&nbsp; 2015 – 2016</span>
+            </div>
+            <p class="cv-project-type">Residential &nbsp;·&nbsp; Heritage</p>
+
+            <div class="cv-filmstrip">
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/terrace-01.jpg" alt="Terrace House Restoration"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+                <div class="cv-filmstrip-item">
+                    <!-- <img src="/assets/images/projects/terrace-02.jpg" alt="Terrace House Restoration"> -->
+                    <div class="cv-img-placeholder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Add image
+                    </div>
+                </div>
+            </div>
+
+            <p class="cv-project-description">
+                Sensitive restoration of a Victorian terrace combined with a contemporary rear 
+                extension. The project navigated heritage constraints to create a bright, connected 
+                living environment that respects the original fabric.
+            </p>
+            <div class="cv-project-role">
+                <strong>Role</strong>
+                Graduate Architect responsible for design development, heritage documentation, 
+                and contractor coordination throughout construction.
+            </div>
+        </div>
+    </div>
+
+    <hr class="cv-divider">
+
+    <!-- ── Skills ───────────────────────────────────────────── -->
+    <div class="cv-skills-block">
+        <h2 class="cv-section-heading">Skills &amp; Software</h2>
+        <div class="cv-skills-grid">
+            <div>
+                <p class="cv-skill-group-title">Design &amp; Documentation</p>
+                <ul class="cv-skill-list">
+                    <li>Revit BIM</li>
+                    <li>AutoCAD</li>
+                    <li>Rhino / Grasshopper</li>
+                    <li>SketchUp</li>
+                    <li>Adobe Creative Suite</li>
+                </ul>
+            </div>
+            <div>
+                <p class="cv-skill-group-title">Specialisation</p>
+                <ul class="cv-skill-list">
+                    <li>Healthcare &amp; Clinical Planning</li>
+                    <li>Infection Control Design</li>
+                    <li>Heritage Conservation</li>
+                    <li>Stakeholder Facilitation</li>
+                    <li>Construction Administration</li>
+                </ul>
+            </div>
+            <div>
+                <p class="cv-skill-group-title">Compliance</p>
+                <ul class="cv-skill-list">
+                    <li>NCC / BCA</li>
+                    <li>AHFG / Health Planning Guidelines</li>
+                    <li>AS 1428 Accessibility</li>
+                    <li>NABERS / Green Star</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr class="cv-divider">
+
+    <!-- ── Education ────────────────────────────────────────── -->
+    <div class="cv-education-block">
+        <h2 class="cv-section-heading">Education &amp; Registration</h2>
+
+        <div class="cv-education-item">
+            <div>
+                <div class="cv-degree">Bachelor of Architecture (Honours)</div>
+                <div class="cv-school">University of Technology Sydney</div>
+            </div>
+            <span class="cv-education-year">2012</span>
+        </div>
+
+        <div class="cv-education-item">
+            <div>
+                <div class="cv-degree">Registered Architect — NSW ARB</div>
+                <div class="cv-school">Architects Registration Board of NSW &nbsp;·&nbsp; #11475</div>
+            </div>
+            <span class="cv-education-year">2015</span>
+        </div>
+
+        <div class="cv-education-item">
+            <div>
+                <div class="cv-degree">Member, Australian Institute of Architects</div>
+                <div class="cv-school">RAIA</div>
+            </div>
+            <span class="cv-education-year">2015 – Present</span>
+        </div>
+    </div>
+
+    <hr class="cv-divider">
+
+    <!-- ── Awards ───────────────────────────────────────────── -->
+    <div class="cv-awards-block">
+        <h2 class="cv-section-heading">Awards &amp; Recognition</h2>
+
+        <div class="cv-award-item">
+            <span class="cv-award-name">AIA NSW Architecture Awards — Commendation, Public Architecture</span>
+            <span class="cv-award-year">2021</span>
+        </div>
+        <div class="cv-award-item">
+            <span class="cv-award-name">Replace with your actual awards</span>
+            <span class="cv-award-year">Year</span>
+        </div>
+    </div>
+
+    <!-- ── Print / Footer ───────────────────────────────────── -->
+    <div class="cv-print-note">
+        <span>Dorian Brennan &nbsp;·&nbsp; Architect &nbsp;·&nbsp; Sydney</span>
+        <button class="cv-print-btn" onclick="window.print()">Print / Save PDF</button>
+    </div>
+
+</section>
+
+<script>
+(function () {
+    const buttons = document.querySelectorAll('.cv-filter-btn');
+    const projects = document.querySelectorAll('.cv-project-item');
+
+    buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const filter = btn.getAttribute('data-filter');
+
+            // Update active button
+            buttons.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+
+            // Show / hide projects
+            projects.forEach(function (project) {
+                if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                    project.classList.remove('hidden');
+                } else {
+                    project.classList.add('hidden');
+                }
+            });
+        });
+    });
+})();
+</script>
