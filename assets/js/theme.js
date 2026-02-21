@@ -109,6 +109,17 @@
             });
         }
     }
+
+    /**
+     * Measures the fixed nav and stores its current height in a CSS variable.
+     * This prevents first-content overlap on mobile browsers with dynamic UI chrome.
+     */
+    function syncNavHeightVar() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+        const navHeight = Math.ceil(nav.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
+    }
     
     // Listen for system theme changes
     prefersDark.addEventListener('change', function(e) {
@@ -121,5 +132,12 @@
     // Initialize
     initializeTheme();
     setupToggleButton();
+    syncNavHeightVar();
+
+    window.addEventListener('resize', syncNavHeightVar);
+    window.addEventListener('orientationchange', syncNavHeightVar);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', syncNavHeightVar);
+    }
     
 })();

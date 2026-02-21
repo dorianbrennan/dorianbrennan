@@ -136,7 +136,7 @@ nav a:hover {
 
 /* Main content */
 main {
-    margin-top: calc(100px + env(safe-area-inset-top));
+    margin-top: calc(var(--nav-height, 100px) + 16px);
     min-height: calc(100vh - 200px);
 }
 
@@ -242,7 +242,7 @@ a.link:hover {
 
 /* Landing page */
 body.page-home main {
-    margin-top: 88px;
+    margin-top: calc(var(--nav-height, 88px) + 8px);
     min-height: auto;
 }
 
@@ -816,7 +816,7 @@ body.page-story #stories a:hover {
 /* Responsive */
 @media (max-width: 640px) {
     body.page-home main {
-        margin-top: calc(100px + env(safe-area-inset-top));
+        margin-top: calc(var(--nav-height, 100px) + 8px);
     }
 
     body.page-home footer {
