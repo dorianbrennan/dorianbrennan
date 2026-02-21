@@ -354,6 +354,10 @@ body.page-about main {
 
 #about h1 {
     margin-top: 0.5rem;
+    font-size: 28px;
+    font-weight: 200;
+    letter-spacing: -0.3px;
+    color: var(--text);
 }
 
 #about .intro {
@@ -386,7 +390,9 @@ body.page-about main {
 }
 
 #about .connect-section {
-    margin-top: 4rem;
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--accent);
 }
 
 @media (min-width: 641px) {
@@ -423,8 +429,8 @@ body.page-about main {
     }
 
     #about .connect-section {
-        margin-top: auto;
-        padding-top: 20px;
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
     }
 
     #about .connect-section h2 {
