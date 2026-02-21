@@ -492,7 +492,9 @@ nav .container {
     -webkit-user-drag: none;
     user-select: none;
     opacity: 1;
-    transition: opacity 0.16s ease;
+    transform: scale(var(--cv-lightbox-zoom, 1));
+    transform-origin: center;
+    transition: opacity 0.16s ease, transform 0.22s ease;
 }
 
 .cv-lightbox-image.is-loading {
@@ -500,8 +502,9 @@ nav .container {
 }
 
 .cv-lightbox-image.cv-image-tight-fill {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center 48%;
+    --cv-lightbox-zoom: 1.42;
 }
 
 @media (prefers-reduced-motion: reduce) {
