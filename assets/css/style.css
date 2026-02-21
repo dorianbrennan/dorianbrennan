@@ -136,7 +136,7 @@ nav a:hover {
 
 /* Main content */
 main {
-    margin-top: 100px;
+    margin-top: calc(100px + env(safe-area-inset-top));
     min-height: calc(100vh - 200px);
 }
 
@@ -816,7 +816,7 @@ body.page-story #stories a:hover {
 /* Responsive */
 @media (max-width: 640px) {
     body.page-home main {
-        margin-top: 100px;
+        margin-top: calc(100px + env(safe-area-inset-top));
     }
 
     body.page-home footer {
