@@ -2,6 +2,7 @@
 layout: default
 title: CV
 sitemap: false
+body_class: page-cv
 ---
 
 <meta name="robots" content="noindex, nofollow">
@@ -34,12 +35,16 @@ nav .container {
 /* ── CV-specific styles ─────────────────────────────────── */
 
 .cv-page {
-    padding: 60px 40px 80px;
+    padding: calc(var(--nav-height, 100px) + 28px) 40px 80px;
 }
 
 @media (max-width: 640px) {
+    body.page-cv main {
+        margin-top: 0;
+    }
+
     .cv-page {
-        padding: 40px 20px 60px;
+        padding: calc(var(--nav-height, 100px) + 20px) 20px 60px;
     }
 }
 
