@@ -587,24 +587,28 @@ body.page-cv main.container {
     object-fit: cover;
     object-position: center;
     display: block;
+    transform: scale(1) translateZ(0);
     transition: transform 0.4s ease;
     cursor: zoom-in;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     -webkit-user-drag: none;
     user-select: none;
 }
 
 .cv-filmstrip-item:hover img {
-    transform: scale(1.03);
+    transform: scale(1.03) translateZ(0);
 }
 
 /* Use extra crop for images that include built-in letterboxing */
 .cv-filmstrip-item img.cv-image-tight-fill {
-    transform: scale(1.42);
+    transform: scale(1.42) translateZ(0);
     object-position: center 48%;
 }
 
 .cv-filmstrip-item:hover img.cv-image-tight-fill {
-    transform: scale(1.45);
+    transform: scale(1.45) translateZ(0);
 }
 
 /* Lightbox */
@@ -1574,10 +1578,6 @@ body.page-cv main.container {
 
     lightboxTriggers.forEach(function (img) {
         const source = img.currentSrc || img.src;
-
-        img.addEventListener('pointerenter', function () {
-            warmImage(source);
-        }, { passive: true });
 
         img.addEventListener('focus', function () {
             warmImage(source);
