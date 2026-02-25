@@ -490,6 +490,8 @@ body.page-about main {
 /* Stories */
 #stories .intro {
     margin-bottom: 32px;
+    font-size: inherit;
+    line-height: inherit;
 }
 
 #stories .title-underline {
@@ -527,9 +529,10 @@ body.page-about main {
 
 .story-title {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
+    margin-top: 0;
     margin-bottom: 8px;
-    letter-spacing: 0.3px;
+    letter-spacing: normal;
     transition: color 0.2s;
 }
 
@@ -554,18 +557,18 @@ body.page-about main {
 
 #stories .story-content {
     font-size: 15px;
-    line-height: 1.9;
+    line-height: 1.6;
     color: var(--text);
     margin-bottom: 12px;
 }
 
 #stories .story-content p {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     color: var(--text);
 }
 
 .story-content p:first-of-type {
-    font-size: 15px;
+    font-size: inherit;
 }
 
 .read-more {
