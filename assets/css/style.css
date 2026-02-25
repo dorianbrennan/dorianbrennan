@@ -526,7 +526,7 @@ body.page-about main {
 }
 
 .story-title {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 300;
     margin-bottom: 8px;
     letter-spacing: 0.3px;
@@ -553,7 +553,7 @@ body.page-about main {
 }
 
 #stories .story-content {
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.9;
     color: var(--text);
     margin-bottom: 12px;
@@ -565,7 +565,7 @@ body.page-about main {
 }
 
 .story-content p:first-of-type {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .read-more {
