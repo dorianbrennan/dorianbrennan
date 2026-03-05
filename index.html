@@ -40,8 +40,9 @@ body_class: page-home
 
         <div class="home-column">
             <h2>Recent Stories</h2>
+            {% assign recent_stories = site.stories | sort: "date" | reverse %}
             {% if site.stories.size > 0 %}
-                {% for story in site.stories limit:3 %}
+                {% for story in recent_stories limit:3 %}
                 <div class="home-post-item">
                     <a class="row-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title }}"></a>
                     <div class="home-post-title">
