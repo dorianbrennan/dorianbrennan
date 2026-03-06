@@ -3,7 +3,6 @@ layout: post
 title: Apple Environments
 date: 2026-03-06
 excerpt: Apple Vision Pro’s environments have been one of the most fascinating aspects of the device allowing users to fully immerse themselves in entirely different places.
-image: /assets/images/
 ---
 
 Apple Vision Pro’s environments have been one of the most fascinating aspects of the device allowing users to fully immerse themselves in entirely different places.
