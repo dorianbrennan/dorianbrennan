@@ -10,7 +10,8 @@ body_class: page-story
         <span>Stories that explore the strange and the familiar.</span>
     </div>
     
-    {% for story in site.stories %}
+    {% assign sorted_stories = site.stories | sort: "date" | reverse %}
+    {% for story in sorted_stories %}
     <div class="story-item">
         <a class="row-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title }}"></a>
         <div class="story-header">
