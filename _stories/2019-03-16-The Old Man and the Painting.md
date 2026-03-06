@@ -9,14 +9,14 @@ An old man is holding his wife’s hand. They are reminiscing about the lives th
 
 Time passes and the old man decides to go on a trip. He travels by himself to the painting, which is still in the same gallery he and his wife visited many years ago.
 
-He takes a seat conveniently located in front of it. Visitors walk around, looking at the artworks on the walls. Some glance at the old man and smile.
+He takes a seat conveniently located in front of it. Visitors walk around, looking at the artwork on the walls. Some glance at the old man and smile.
 
 He sits for hours, remembering the good times he shared with his wife, the life they built together, and everything the painting meant to them.
 
-Suddenly, the old man notices that the gallery is empty. His wife walks in from the connecting gallery. A smile begins to appear on his face.
+Suddenly, the old man notices that the gallery is empty. His wife walks in from the connecting gallery. A smile begins to appear on his face. She is glowing. 
 
 He gets up and takes her hand. They walk over to the painting and take it in one last time. He squeezes her hand three times, like he always did, and they both turn and walk out of the gallery.
 
-A child notices an old man sitting in a chair. He pulls on his father’s arm and whispers, “Dad, I think he’s asleep.” The father walks over to the old man and taps him on the shoulder.
+A child notices an old man sitting in a chair. He pulls on his father’s arm and whispers, “Dad, I think he’s asleep.” The child before the father could say anything walks over to the old man and taps him on the shoulder.
 
 The old man’s eyes stay closed.
