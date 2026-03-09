@@ -752,6 +752,7 @@ body.page-cv main.container {
     max-height: 66vh;
     object-fit: contain;
     background: #07090c;
+    border-radius: 18px;
     display: block;
     -webkit-user-drag: none;
     user-select: none;
@@ -825,6 +826,33 @@ body.page-cv main.container {
     text-align: center;
     color: rgba(243, 246, 250, 0.75);
     font-size: 0.85rem;
+}
+
+.cv-lightbox-reset-btn {
+    padding: 0 14px;
+    min-width: 72px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #f3f6fa;
+    font-size: 0.84rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.cv-lightbox-reset-btn:hover {
+    transform: scale(1.04);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.32);
+}
+
+.cv-lightbox-reset-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 @media (max-width: 720px) {
@@ -1510,6 +1538,7 @@ body.page-cv main.container {
                     <button class="cv-lightbox-zoom-btn" id="cvLightboxZoomOut" type="button" aria-label="Zoom out">-</button>
                     <span class="cv-lightbox-zoom-level" id="cvLightboxZoomLevel">100%</span>
                     <button class="cv-lightbox-zoom-btn" id="cvLightboxZoomIn" type="button" aria-label="Zoom in">+</button>
+                    <button class="cv-lightbox-reset-btn" id="cvLightboxZoomReset" type="button" aria-label="Reset zoom">Reset</button>
                 </div>
             </div>
         </div>
@@ -1637,6 +1666,7 @@ body.page-cv main.container {
     const lightboxCaption = document.getElementById('cvLightboxCaption');
     const lightboxZoomOut = document.getElementById('cvLightboxZoomOut');
     const lightboxZoomIn = document.getElementById('cvLightboxZoomIn');
+    const lightboxZoomReset = document.getElementById('cvLightboxZoomReset');
     const lightboxZoomLevel = document.getElementById('cvLightboxZoomLevel');
     const lightboxTriggers = document.querySelectorAll('.cv-filmstrip-item img');
     const warmedImages = new Set();
@@ -1688,6 +1718,9 @@ body.page-cv main.container {
         }
         if (lightboxZoomIn) {
             lightboxZoomIn.disabled = currentZoom >= maxZoom;
+        }
+        if (lightboxZoomReset) {
+            lightboxZoomReset.disabled = currentZoom === 1;
         }
     }
 
@@ -1793,6 +1826,12 @@ body.page-cv main.container {
         });
     }
 
+    if (lightboxZoomReset) {
+        lightboxZoomReset.addEventListener('click', function () {
+            setZoom(1);
+        });
+    }
+
     lightbox.addEventListener('contextmenu', function (event) {
         event.preventDefault();
     });
@@ -1829,6 +1868,11 @@ body.page-cv main.container {
         if (event.key === '-' || event.key === '_') {
             event.preventDefault();
             setZoom(currentZoom - zoomStep);
+        }
+
+        if (event.key === '0') {
+            event.preventDefault();
+            setZoom(1);
         }
     });
 
