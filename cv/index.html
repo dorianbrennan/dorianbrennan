@@ -744,6 +744,7 @@ body.page-cv main.container {
     border-radius: 18px;
     overflow: hidden;
     background: #05070a;
+    position: relative;
 }
 
 .cv-lightbox-image {
@@ -756,14 +757,24 @@ body.page-cv main.container {
     display: block;
     -webkit-user-drag: none;
     user-select: none;
+    cursor: default;
     opacity: 1;
-    transform: scale(var(--cv-lightbox-zoom, 1));
+    transform: translate3d(var(--cv-lightbox-pan-x, 0px), var(--cv-lightbox-pan-y, 0px), 0) scale(var(--cv-lightbox-zoom, 1));
     transform-origin: center;
     transition: opacity 0.16s ease, transform 0.22s ease;
 }
 
 .cv-lightbox-image.is-loading {
     opacity: 0;
+}
+
+.cv-lightbox-image.is-draggable {
+    cursor: grab;
+}
+
+.cv-lightbox-image.is-dragging {
+    cursor: grabbing;
+    transition: opacity 0.16s ease;
 }
 
 .cv-lightbox-image.cv-image-tight-fill {
@@ -1663,6 +1674,7 @@ body.page-cv main.container {
     const lightboxPrev = document.getElementById('cvLightboxPrev');
     const lightboxNext = document.getElementById('cvLightboxNext');
     const lightboxImage = document.getElementById('cvLightboxImage');
+    const lightboxImageFrame = lightboxImage ? lightboxImage.parentElement : null;
     const lightboxCaption = document.getElementById('cvLightboxCaption');
     const lightboxZoomOut = document.getElementById('cvLightboxZoomOut');
     const lightboxZoomIn = document.getElementById('cvLightboxZoomIn');
@@ -1676,6 +1688,61 @@ body.page-cv main.container {
     let activeGallery = [];
     let activeIndex = 0;
     let currentZoom = 1;
+    let currentPanX = 0;
+    let currentPanY = 0;
+    let isDraggingImage = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragOriginPanX = 0;
+    let dragOriginPanY = 0;
+
+    function getPanLimits(zoomValue) {
+        if (!lightboxImageFrame || !lightboxImage.naturalWidth || !lightboxImage.naturalHeight) {
+            return { x: 0, y: 0 };
+        }
+
+        const frameRect = lightboxImageFrame.getBoundingClientRect();
+        const frameWidth = frameRect.width;
+        const frameHeight = frameRect.height;
+        const imageRatio = lightboxImage.naturalWidth / lightboxImage.naturalHeight;
+        let fittedWidth = frameWidth;
+        let fittedHeight = fittedWidth / imageRatio;
+
+        if (fittedHeight > frameHeight) {
+            fittedHeight = frameHeight;
+            fittedWidth = fittedHeight * imageRatio;
+        }
+
+        return {
+            x: Math.max(0, (fittedWidth * zoomValue - frameWidth) / 2),
+            y: Math.max(0, (fittedHeight * zoomValue - frameHeight) / 2)
+        };
+    }
+
+    function clampPan(x, y, zoomValue) {
+        const limits = getPanLimits(zoomValue);
+        return {
+            x: Math.min(limits.x, Math.max(-limits.x, x)),
+            y: Math.min(limits.y, Math.max(-limits.y, y))
+        };
+    }
+
+    function updatePanDisplay() {
+        const clamped = clampPan(currentPanX, currentPanY, currentZoom);
+        currentPanX = clamped.x;
+        currentPanY = clamped.y;
+        lightboxImage.style.setProperty('--cv-lightbox-pan-x', currentPanX.toFixed(1) + 'px');
+        lightboxImage.style.setProperty('--cv-lightbox-pan-y', currentPanY.toFixed(1) + 'px');
+        const isDraggable = currentZoom > 1;
+        lightboxImage.classList.toggle('is-draggable', isDraggable && !isDraggingImage);
+        lightboxImage.classList.toggle('is-dragging', isDraggingImage);
+    }
+
+    function resetPan() {
+        currentPanX = 0;
+        currentPanY = 0;
+        updatePanDisplay();
+    }
 
     function warmImage(src) {
         if (!src || warmedImages.has(src)) return;
@@ -1701,6 +1768,8 @@ body.page-cv main.container {
         lightbox.classList.remove('is-open');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        isDraggingImage = false;
+        updatePanDisplay();
     }
 
     function clampZoom(value) {
@@ -1710,6 +1779,7 @@ body.page-cv main.container {
     function updateZoomDisplay() {
         const zoomPercent = Math.round(currentZoom * 100);
         lightboxImage.style.setProperty('--cv-lightbox-zoom', currentZoom.toFixed(2));
+        updatePanDisplay();
         if (lightboxZoomLevel) {
             lightboxZoomLevel.textContent = zoomPercent + '%';
         }
@@ -1726,6 +1796,10 @@ body.page-cv main.container {
 
     function setZoom(value) {
         currentZoom = clampZoom(value);
+        if (currentZoom <= 1) {
+            currentPanX = 0;
+            currentPanY = 0;
+        }
         updateZoomDisplay();
     }
 
@@ -1753,6 +1827,7 @@ body.page-cv main.container {
         if (lightboxCaption) {
             lightboxCaption.textContent = img.alt || 'Project image';
         }
+        resetPan();
         setZoom(1);
         syncImageReadyState();
     }
@@ -1839,6 +1914,46 @@ body.page-cv main.container {
     lightboxImage.addEventListener('dragstart', function (event) {
         event.preventDefault();
     });
+
+    if (lightboxImageFrame) {
+        lightboxImageFrame.addEventListener('pointerdown', function (event) {
+            if (currentZoom <= 1) return;
+            isDraggingImage = true;
+            dragStartX = event.clientX;
+            dragStartY = event.clientY;
+            dragOriginPanX = currentPanX;
+            dragOriginPanY = currentPanY;
+            lightboxImageFrame.setPointerCapture(event.pointerId);
+            updatePanDisplay();
+            event.preventDefault();
+        });
+
+        lightboxImageFrame.addEventListener('pointermove', function (event) {
+            if (!isDraggingImage) return;
+            currentPanX = dragOriginPanX + (event.clientX - dragStartX);
+            currentPanY = dragOriginPanY + (event.clientY - dragStartY);
+            updatePanDisplay();
+            event.preventDefault();
+        });
+
+        lightboxImageFrame.addEventListener('pointerup', function (event) {
+            if (!isDraggingImage) return;
+            isDraggingImage = false;
+            if (lightboxImageFrame.hasPointerCapture(event.pointerId)) {
+                lightboxImageFrame.releasePointerCapture(event.pointerId);
+            }
+            updatePanDisplay();
+        });
+
+        lightboxImageFrame.addEventListener('pointercancel', function (event) {
+            if (!isDraggingImage) return;
+            isDraggingImage = false;
+            if (lightboxImageFrame.hasPointerCapture(event.pointerId)) {
+                lightboxImageFrame.releasePointerCapture(event.pointerId);
+            }
+            updatePanDisplay();
+        });
+    }
 
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
