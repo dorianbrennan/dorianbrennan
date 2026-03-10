@@ -802,39 +802,6 @@ body.page-cv main.container {
     line-height: 1.5;
 }
 
-.cv-lightbox-controls {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.cv-lightbox-zoom-label {
-    color: rgba(243, 246, 250, 0.7);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.cv-lightbox-zoom-range {
-    width: min(200px, 28vw);
-    flex: 1;
-    accent-color: var(--accent);
-    cursor: pointer;
-}
-
-.cv-lightbox-zoom-level {
-    min-width: 48px;
-    text-align: center;
-    color: rgba(243, 246, 250, 0.75);
-    font-size: 0.85rem;
-}
 
 @media (max-width: 720px) {
     .cv-lightbox {
@@ -859,14 +826,6 @@ body.page-cv main.container {
         flex-direction: column;
     }
 
-    .cv-lightbox-controls {
-        width: 100%;
-    }
-
-    .cv-lightbox-zoom-range {
-        flex: 1;
-        width: 100%;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1530,11 +1489,6 @@ body.page-cv main.container {
             </div>
             <div class="cv-lightbox-meta">
                 <p class="cv-lightbox-caption" id="cvLightboxCaption"></p>
-                <div class="cv-lightbox-controls" aria-label="Image zoom controls">
-                    <label class="cv-lightbox-zoom-label" for="cvLightboxZoomRange">Zoom</label>
-                    <input class="cv-lightbox-zoom-range" id="cvLightboxZoomRange" type="range" min="100" max="250" step="5" value="100" aria-label="Zoom level">
-                    <span class="cv-lightbox-zoom-level" id="cvLightboxZoomLevel">100%</span>
-                </div>
             </div>
         </div>
     </div>
@@ -1660,8 +1614,6 @@ body.page-cv main.container {
     const lightboxImage = document.getElementById('cvLightboxImage');
     const lightboxImageFrame = lightboxImage ? lightboxImage.parentElement : null;
     const lightboxCaption = document.getElementById('cvLightboxCaption');
-    const lightboxZoomRange = document.getElementById('cvLightboxZoomRange');
-    const lightboxZoomLevel = document.getElementById('cvLightboxZoomLevel');
     const lightboxTriggers = document.querySelectorAll('.cv-filmstrip-item img');
     const warmedImages = new Set();
     const minZoom = 1;
@@ -1759,15 +1711,8 @@ body.page-cv main.container {
     }
 
     function updateZoomDisplay() {
-        const zoomPercent = Math.round(currentZoom * 100);
         lightboxImage.style.setProperty('--cv-lightbox-zoom', currentZoom.toFixed(2));
         updatePanDisplay();
-        if (lightboxZoomLevel) {
-            lightboxZoomLevel.textContent = zoomPercent + '%';
-        }
-        if (lightboxZoomRange) {
-            lightboxZoomRange.value = String(zoomPercent);
-        }
     }
 
     function setZoom(value) {
@@ -1865,15 +1810,6 @@ body.page-cv main.container {
         });
     }
 
-    if (lightboxZoomRange) {
-        lightboxZoomRange.min = String(Math.round(minZoom * 100));
-        lightboxZoomRange.max = String(Math.round(maxZoom * 100));
-        lightboxZoomRange.value = String(Math.round(currentZoom * 100));
-        lightboxZoomRange.addEventListener('input', function () {
-            setZoom(parseFloat(lightboxZoomRange.value) / 100);
-        });
-    }
-
     lightbox.addEventListener('contextmenu', function (event) {
         event.preventDefault();
     });
@@ -1883,6 +1819,13 @@ body.page-cv main.container {
     });
 
     if (lightboxImageFrame) {
+        lightboxImageFrame.addEventListener('wheel', function (event) {
+            if (!lightbox.classList.contains('is-open')) return;
+            event.preventDefault();
+            const direction = event.deltaY > 0 ? -1 : 1;
+            setZoom(currentZoom + direction * zoomStep);
+        }, { passive: false });
+
         lightboxImageFrame.addEventListener('dblclick', function () {
             setZoom(1);
         });
