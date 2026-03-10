@@ -805,35 +805,28 @@ body.page-cv main.container {
 .cv-lightbox-controls {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-shrink: 0;
-}
-
-.cv-lightbox-zoom-btn {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #f3f6fa;
-    font-size: 1.1rem;
-    line-height: 1;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.cv-lightbox-zoom-label {
+    color: rgba(243, 246, 250, 0.7);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cv-lightbox-zoom-range {
+    width: min(200px, 28vw);
+    flex: 1;
+    accent-color: var(--accent);
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-}
-
-.cv-lightbox-zoom-btn:hover {
-    transform: scale(1.04);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.32);
-}
-
-.cv-lightbox-zoom-btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
 }
 
 .cv-lightbox-zoom-level {
@@ -841,33 +834,6 @@ body.page-cv main.container {
     text-align: center;
     color: rgba(243, 246, 250, 0.75);
     font-size: 0.85rem;
-}
-
-.cv-lightbox-reset-btn {
-    padding: 0 14px;
-    min-width: 72px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #f3f6fa;
-    font-size: 0.84rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-}
-
-.cv-lightbox-reset-btn:hover {
-    transform: scale(1.04);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.32);
-}
-
-.cv-lightbox-reset-btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
 }
 
 @media (max-width: 720px) {
@@ -891,6 +857,15 @@ body.page-cv main.container {
     .cv-lightbox-meta {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .cv-lightbox-controls {
+        width: 100%;
+    }
+
+    .cv-lightbox-zoom-range {
+        flex: 1;
+        width: 100%;
     }
 }
 
@@ -1556,10 +1531,9 @@ body.page-cv main.container {
             <div class="cv-lightbox-meta">
                 <p class="cv-lightbox-caption" id="cvLightboxCaption"></p>
                 <div class="cv-lightbox-controls" aria-label="Image zoom controls">
-                    <button class="cv-lightbox-zoom-btn" id="cvLightboxZoomOut" type="button" aria-label="Zoom out">-</button>
+                    <label class="cv-lightbox-zoom-label" for="cvLightboxZoomRange">Zoom</label>
+                    <input class="cv-lightbox-zoom-range" id="cvLightboxZoomRange" type="range" min="100" max="250" step="5" value="100" aria-label="Zoom level">
                     <span class="cv-lightbox-zoom-level" id="cvLightboxZoomLevel">100%</span>
-                    <button class="cv-lightbox-zoom-btn" id="cvLightboxZoomIn" type="button" aria-label="Zoom in">+</button>
-                    <button class="cv-lightbox-reset-btn" id="cvLightboxZoomReset" type="button" aria-label="Reset zoom">Reset</button>
                 </div>
             </div>
         </div>
@@ -1686,9 +1660,7 @@ body.page-cv main.container {
     const lightboxImage = document.getElementById('cvLightboxImage');
     const lightboxImageFrame = lightboxImage ? lightboxImage.parentElement : null;
     const lightboxCaption = document.getElementById('cvLightboxCaption');
-    const lightboxZoomOut = document.getElementById('cvLightboxZoomOut');
-    const lightboxZoomIn = document.getElementById('cvLightboxZoomIn');
-    const lightboxZoomReset = document.getElementById('cvLightboxZoomReset');
+    const lightboxZoomRange = document.getElementById('cvLightboxZoomRange');
     const lightboxZoomLevel = document.getElementById('cvLightboxZoomLevel');
     const lightboxTriggers = document.querySelectorAll('.cv-filmstrip-item img');
     const warmedImages = new Set();
@@ -1793,14 +1765,8 @@ body.page-cv main.container {
         if (lightboxZoomLevel) {
             lightboxZoomLevel.textContent = zoomPercent + '%';
         }
-        if (lightboxZoomOut) {
-            lightboxZoomOut.disabled = currentZoom <= minZoom;
-        }
-        if (lightboxZoomIn) {
-            lightboxZoomIn.disabled = currentZoom >= maxZoom;
-        }
-        if (lightboxZoomReset) {
-            lightboxZoomReset.disabled = currentZoom === 1;
+        if (lightboxZoomRange) {
+            lightboxZoomRange.value = String(zoomPercent);
         }
     }
 
@@ -1899,21 +1865,12 @@ body.page-cv main.container {
         });
     }
 
-    if (lightboxZoomOut) {
-        lightboxZoomOut.addEventListener('click', function () {
-            setZoom(currentZoom - zoomStep);
-        });
-    }
-
-    if (lightboxZoomIn) {
-        lightboxZoomIn.addEventListener('click', function () {
-            setZoom(currentZoom + zoomStep);
-        });
-    }
-
-    if (lightboxZoomReset) {
-        lightboxZoomReset.addEventListener('click', function () {
-            setZoom(1);
+    if (lightboxZoomRange) {
+        lightboxZoomRange.min = String(Math.round(minZoom * 100));
+        lightboxZoomRange.max = String(Math.round(maxZoom * 100));
+        lightboxZoomRange.value = String(Math.round(currentZoom * 100));
+        lightboxZoomRange.addEventListener('input', function () {
+            setZoom(parseFloat(lightboxZoomRange.value) / 100);
         });
     }
 
@@ -1926,6 +1883,9 @@ body.page-cv main.container {
     });
 
     if (lightboxImageFrame) {
+        lightboxImageFrame.addEventListener('dblclick', function () {
+            setZoom(1);
+        });
         lightboxImageFrame.addEventListener('pointerdown', function (event) {
             if (currentZoom <= 1) return;
             isDraggingImage = true;
