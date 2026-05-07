@@ -3,10 +3,10 @@ layout: post
 title: Cravents Yosemite
 date: 2026-02-19
 excerpt: Fantastic work by Robinsson Cravents on his latest artwork. This commission features Yosemite National Park. He has released the Autumn and Winter pieces, with Summer and Spring to follow.
-image: /assets/images/Yosemite-Valley.jpeg
+image: /assets/images/blog/Yosemite-Valley.jpeg
 ---
 
-<img src="{{ '/assets/images/Yosemite-Valley.jpeg' | relative_url }}" alt="Yosemite">
+<img src="{{ '/assets/images/blog/Yosemite-Valley.jpeg' | relative_url }}" alt="Yosemite">
 
 Fantastic work by [Robinsson Cravents](https://cravents.com) on his latest [artwork](https://cravents.com/yosemite-autumnwinter). This commission features Yosemite National Park. He has released the Autumn and Winter pieces, with Summer and Spring to follow.
 

@@ -3,10 +3,10 @@ layout: post
 title: The quiet company of books in 2025
 date: 2026-01-08
 excerpt: As always, reading is a big part of who I am, and 2025 was no different. Below is a list of some of the books I read throughout the year. I almost reached my goal of 25 books (finishing 24), so hopefully this year I can meet and even surpass that number.
-image: /assets/images/Books-2025.jpeg
+image: /assets/images/blog/Books-2025.jpeg
 ---
 
-<img src="{{ '/assets/images/Books-2025.jpeg' | relative_url }}" alt="Books of 2025">
+<img src="{{ '/assets/images/blog/Books-2025.jpeg' | relative_url }}" alt="Books of 2025">
 
 As always, reading is a big part of who I am, and 2025 was no different. Below is a list of some of the books I read throughout the year. I almost reached my goal of 25 books (finishing 24), so hopefully this year I can meet and even surpass that number.
 

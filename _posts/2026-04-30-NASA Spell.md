@@ -3,9 +3,9 @@ layout: post
 title: NASA Spell
 date: 2026-04-30
 excerpt: NASA has a really neat website that lets you spell out words using satellite images
-image: /assets/images/NASA-Spell.jpeg
+image: /assets/images/blog/NASA-Spell.jpeg
 ---
 
-<img src="{{ '/assets/images/NASA-Spell.jpeg' | relative_url }}" alt="NASA">
+<img src="{{ '/assets/images/blog/NASA-Spell.jpeg' | relative_url }}" alt="NASA">
 
 NASA has a really neat [website](https://science.nasa.gov/mission/landsat/outreach/your-name-in-landsat/) that lets you spell out words using satellite images of different landscape features on Earth. You can click on each image to see where in the world it’s located.
